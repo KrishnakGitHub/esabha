@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="p-5">
+	<h1 class="myhead2">{{mypost.subject}}</h1>
+	<hr>
+<div class="row">
+	<div class="col-sm-6">
+	<p><strong>MSG :: </strong> {{mypost.msg}}</p>
+	<p><strong>Date :: </strong> {{mypost.cr_date | date:"d/m/y"}}</p>
+	</div>
+	<div class="col-sm-6">
+		<img class="img-fluid" src="/media/{{mypost.pic}}" />
+	</div>
+</div>
+<a href="/social/mypost" class="w3-btn w3-white w3-border w3-border-teal w3-round">Back</a>
+</div>
+{% endblock %}

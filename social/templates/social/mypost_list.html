@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+    <!-- Header -->
+<header class="w3-container bgimg text-white w3-center p-3" >
+  <h1 class="w3-margin w3-jumbo">PROFILE BOARD</h1>
+  <p class="w3-xlarge">Shaheed Bhagat Singh State Technical Campus</p>
+</header>
+{% if user %}
+<div class="container-fluid">
+        <h1 class="myhead2">My Posts </h1>
+<hr>
+<div class="row p-5">
+
+{% for n1 in mypost_list %}
+	<div class="col-sm-4 p-4">
+<div class="card h-100">
+    <img class="card-img-top" src="/media/{{n1.pic}}" alt="">
+    <div class="card-body">
+        <h4 class="card-title">{{n1.subject}}</h4>
+        <p class="card-text">{{n1.cr_date | date:"d/m/y"}} - {{n1.uploaded_by.name}}
+        {% if n1.uploaded_by.pic %}
+		<img style="width: 50px; height: 50px;" src="/media/{{n1.uploaded_by.pic}}" class="img-fluid rounded-circle"  />
+		{% endif %}
+		</p>
+		     {% if n1.liked %}
+            <a class="w3-btn w3-white w3-border w3-border-teal w3-round" href='/social/mypost/unlike/{{n1.id}}'><span class="fa fa-thumbs-down"></span></a>
+            {% else %}
+            <a class="w3-btn w3-white w3-border w3-border-teal w3-round" href='/social/mypost/like/{{n1.id}}'><span class="fa fa-thumbs-up"></span></a>
+            {% endif %}
+		<a class="w3-btn w3-white w3-border w3-border-teal w3-round" href='/social/mypost/{{n1.id}}'>Read More</a>
+            {% if user.is_authenticated %}
+            <a class="w3-btn w3-white w3-border w3-border-teal w3-round" href='/social/mypost/delete/{{n1.id}}'><span class="fa fa-trash"></span></a>
+            {% endif %}
+            <!--span class="badge badge-info w3-btn w3-white w3-border w3-border-teal w3-round">Likes {{n1.likedno}}</span-->
+        </div>
+</div>
+
+	</div>
+{% endfor %}
+</div>
+</div>
+{% endif %}
+</div></div>
+
+
+
+
+
+
+<!--div class="p-5">
+<h1 class="myhead2">My Posts </h1>
+<hr>
+<form class="form-inline">
+<input class="form-control mr-3" placeholder="Search" value="{{ request.GET.si }}" type="text" name="si" />
+<input class="btn btn-dark mr-3" type="submit" value="Search" />
+<a class="btn btn-dark" href="/social/mypost/create"><span class="fa fa-plus"></span></a>
+</form>
+
+<table class="table my-3">
+    <thead class="thead-dark">
+        <tr>
+            <th>Subject</th>
+            <th>Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+{% for n1 in mypost_list %}
+        <tr>
+            <td>{{n1.subject}}</td>
+            <td>{{n1.cr_date | date:"d/m/y"}}</td>
+            <td>
+            <a class="btn btn-dark btn-sm" href='/social/mypost/{{n1.id}}'>Read More</a>
+            <a class="btn btn-danger btn-sm" href='/social/mypost/delete/{{n1.id}}'><span class="fa fa-trash"></span></a>
+            </td>
+        </tr>
+{% endfor %}
+</table>
+</div-->
+{% endblock %}

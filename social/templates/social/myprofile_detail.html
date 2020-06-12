@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+</style>
+<br><br>
+<!-- Header -->
+<header class="w3-display-container w3-content w3-center" style="max-width:1500px">
+  <img class="w3-image" src="{% static 'images/photographer.jpg' %}" alt="Me" width="1500" height="600">
+  <div class="w3-display-middle w3-padding-large w3-border w3-wide w3-text-light-grey w3-center">
+    <h1 class="w3-hide-medium w3-hide-small w3-xxxlarge">{{myprofile.name}}</h1>
+    <h5 class="w3-hide-large" style="white-space:nowrap">{{myprofile.name}}</h5>
+    <h3 class="w3-hide-medium w3-hide-small">{{myprofile.description}}</h3>
+  </div>
+
+  <!-- Navbar (placed at the bottom of the header image) -->
+  <div class="w3-bar w3-light-grey w3-round w3-display-bottommiddle w3-hide-small" style="bottom:-16px">
+    <a href="#" class="w3-bar-item w3-button">Home</a>
+    <a href="#portfolio" class="w3-bar-item w3-button">Portfolio</a>
+    <a href="#contact" class="w3-bar-item w3-button">Contact</a>
+  </div>
+</header>
+
+<!-- Navbar on small screens -->
+<div class="w3-center w3-light-grey w3-padding-16 w3-hide-large w3-hide-medium">
+<div class="w3-bar w3-light-grey">
+  <a href="#" class="w3-bar-item w3-button">Home</a>
+  <a href="#portfolio" class="w3-bar-item w3-button">Portfolio</a>
+  <a href="#contact" class="w3-bar-item w3-button">Contact</a>
+</div>
+</div>
+<!-- Page content -->
+<div class="w3-content w3-padding-large w3-margin-top" id="portfolio">
+  <!-- Contact -->
+  <div class="w3-light-grey w3-padding-large w3-padding-32 w3-margin-top" id="contact">
+    <h3 class="w3-center">Contact</h3>
+    <hr>
+    <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus.</p>
+
+    <form action="/action_page.php" target="_blank">
+      <div class="w3-section">
+        <label>Name</label>
+        <input class="w3-input w3-border" type="text" required name="Name">
+      </div>
+      <div class="w3-section">
+        <label>Email</label>
+        <input class="w3-input w3-border" type="text" required name="Email">
+      </div>
+      <div class="w3-section">
+        <label>Message</label>
+        <input class="w3-input w3-border" required name="Message">
+      </div>
+      <button type="submit" class="w3-button w3-block w3-dark-grey">Send</button>
+    </form><br>
+    <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+
+  </div>
+
+<!-- End page content -->
+</div>
+
+
+
+
+<div class="p-5">
+	<h1 class="myhead2">{{myprofile.name}}</h1>
+	<hr>
+<div class="row">
+	<div class="col-sm-6">
+	<p><strong>Age :: </strong> {{myprofile.age}}</p>
+	<p><strong>Gender :: </strong> {{myprofile.gender}}</p>
+	<p><strong>Address :: </strong> {{myprofile.address}}</p>
+	<p><strong>Status :: </strong> {{myprofile.status}}</p>
+	<p><strong>Phone No :: </strong> {{myprofile.phone_no}}</p>
+	<p><strong>Description :: </strong> {{myprofile.description}}</p>
+	</div>
+	<div class="col-sm-6">
+		<img class="img-fluid" src="/media/{{myprofile.pic}}" />
+	</div>
+</div>
+<a href="/social/myprofile" class="w3-btn w3-white w3-border w3-border-teal w3-round">Back</a>
+	{% if request.user.id == myprofile.id %}
+	<a class="w3-btn w3-white w3-border w3-border-teal w3-round" href='/social/myprofile/edit/{{ myprofile.id }}'>Edit</a>
+	{% endif %}
+</div>	</div></div></div>
+{% endblock %}

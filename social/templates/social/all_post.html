@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+  input{
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-bottom: 2px solid #eee;
+  margin: 5px 0;
+  opacity: 0.85;
+  display: inline-block;
+  font-size: 17px;
+  line-height: 20px;
+  text-decoration: none; /* remove underline from anchors */
+}
+
+input:hover,
+.btn:hover {
+  opacity: 1;
+}
+
+input[type=submit]{
+background-color:#45a049;
+}
+
+input[type=submit]:hover {
+  color: #ffff;
+}
+</style>
+
+<br><br>
+<div class="container-fluid">
+<div class="p-5">
+
+<h1 class="myhead2">Latest Jobs</h1>
+    <p>{{date}}</p>
+    <div class="row p-5 w3-teal">
+    <hr>
+        <div class="col">
+            <div id="myBtnContainer p-2">
+              <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+              <button class="btn" onclick="filterSelection('nature')"> Current Week</button>
+              <button class="btn" onclick="filterSelection('cars')"> Last Week</button>
+            </div>
+        </div>
+        <div class="col">
+            <form class="form-inline">
+                <input class="border-bottom w3-teal text-white border-white w-25 mr-3" placeholder="Search" value="{{ request.GET.si }}" type="text" name="si">
+                <input class="border-bottom border-white w-25 mr-5" type="submit" value="Search">
+                <a class="btn btn-primary text-white w3-teal border p-4 w3-right" href="/social/mypost/create"><i class="fa fa-plus"> </i> Post Job</a>
+            </form>
+        </div>
+    <hr>
+    </div>
+
+<div class="container-fluid">
+<div class="row p-5">
+
+{% for n1 in mypost_list %}
+	<div class="col-sm-4 p-4">
+<div class="card h-100">
+    <img class="card-img-top" src="/media/{{n1.pic}}" alt="" height="50%">
+    <div class="card-body">
+        <h4 class="card-title">{{n1.subject}}</h4>
+        <p class="card-text">{{n1.cr_date | date:"d/m/y"}} - {{n1.uploaded_by}}
+        {% if n1.uploaded_by.pic %}
+		<img style="width: 50px; height: 50px;" src="/media/{{n1.uploaded_by.pic}}" class="img-fluid rounded-circle"  />
+		{% endif %}
+		</p>
+		     {% if n1.liked %}
+            <a class="w3-btn w3-white w3-border w3-border-teal w3-round" href='/social/mypost/unlike/{{n1.id}}'><span class="fa fa-thumbs-down"></span></a>
+            {% else %}
+            <a class="w3-btn w3-white w3-border w3-border-teal w3-round" href='/social/mypost/like/{{n1.id}}'><span class="fa fa-thumbs-up"></span></a>
+            {% endif %}
+		<a class="w3-btn w3-white w3-border w3-border-teal w3-round" href='/social/mypost/{{n1.id}}'>Read More</a>
+            {% if user.is_superuser %}
+            <a class="w3-btn w3-white w3-border w3-border-teal w3-round" href='/social/mypost/delete/{{n1.id}}'><span class="fa fa-trash"></span></a>
+            {% endif %}
+            <span class="badge badge-info">Likes {{n1.likedno}}</span>
+        </div>
+</div>
+
+	</div>
+{% endfor %}
+</div>
+</div></div></div>
+
+<script>
+filterSelection("all")
+function filterSelection(c) {
+  var x, i;
+  x = document.getElementsByClassName("column");
+  if (c == "all") c = "";
+  for (i = 0; i < x.length; i++) {
+    w3RemoveClass(x[i], "show");
+    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+  }
+}
+
+function w3AddClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+  }
+}
+
+function w3RemoveClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    while (arr1.indexOf(arr2[i]) > -1) {
+      arr1.splice(arr1.indexOf(arr2[i]), 1);
+    }
+  }
+  element.className = arr1.join(" ");
+}
+
+
+// Add active class to the current button (highlight it)
+var btnContainer = document.getElementById("myBtnContainer");
+var btns = btnContainer.getElementsByClassName("btn");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function(){
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+</script>
+</div>
+{% endblock %}

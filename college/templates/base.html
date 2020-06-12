@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>EFFCON</title>
+</head>
+<body>
+<h1>Logo 123</h1>
+
+{% if user.is_authenticated %}
+<a href="/accounts/logout">Logout</a>
+{% else %}
+<a href="/accounts/login">Login</a>
+{% endif %}
+
+
+
+{% block content %}
+{% endblock %}
+
+<p>Copyright @ Bla</p>
+</body>
+</html>
