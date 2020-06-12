@@ -7,7 +7,7 @@ from esabha import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/', include('registration.backends.default.urls')),                 
+    path('accounts/', include('registration.backends.default.urls')),
 
     path('social/', include('social.urls')), 
     path('', RedirectView.as_view(url="social/")),    

@@ -27,8 +27,11 @@ urlpatterns = [
     
     path('', RedirectView.as_view(url="home/")),
 
-    path('allpost/',views.AllPost.as_view())
-       
+    path('allpost/',views.AllPost.as_view()),
+    path('csv/',views.getfile),
+    path('pdf/',views.getpdf),
+    path('email/',views.mail),
+
 
 
 

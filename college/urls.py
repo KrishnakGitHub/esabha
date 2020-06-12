@@ -11,5 +11,6 @@ urlpatterns = [
 
     path('social/', include(social.urls)),
 
+
     path('', RedirectView.as_view(url="social/")),
 ]
