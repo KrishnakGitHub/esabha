@@ -45,7 +45,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
       </div>
       <div class="w3-section">
         <label>Email</label>
-        <input class="w3-input w3-border" type="text" required name="Email">
+        <input class="w3-input w3-border" type="text" required name="Email" placeholder=" {{myprofile.user.email}}">
       </div>
       <div class="w3-section">
         <label>Message</label>
@@ -73,10 +73,15 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 	<p><strong>Address :: </strong> {{myprofile.address}}</p>
 	<p><strong>Status :: </strong> {{myprofile.status}}</p>
 	<p><strong>Phone No :: </strong> {{myprofile.phone_no}}</p>
+	<p><strong> Email :: </strong> {{myprofile.user.email}}</p>
 	<p><strong>Description :: </strong> {{myprofile.description}}</p>
 	</div>
 	<div class="col-sm-6">
 		<img class="img-fluid" src="/media/{{myprofile.pic}}" />
+	</div>
+    /media/{{myprofile.myresume}}
+    	<div class="col-sm-6">
+            <a class="img-fluid" href="/media/{{myprofile.myresume}}">My Resume</a>
 	</div>
 </div>
 <a href="/social/myprofile" class="w3-btn w3-white w3-border w3-border-teal w3-round">Back</a>

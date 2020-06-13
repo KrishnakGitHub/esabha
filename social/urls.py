@@ -31,6 +31,9 @@ urlpatterns = [
     path('csv/',views.getfile),
     path('pdf/',views.getpdf),
     path('email/',views.mail),
+    path('thanks/',views.thanks),
+    path('feedback/',views.Feedback.as_view(success_url="/social/thanks")),
+    path('faq/',views.QuestionCreate.as_view(success_url="/social/thanks")),
 
 
 

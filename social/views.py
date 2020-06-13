@@ -1,21 +1,24 @@
 import csv
 
 from django.core.mail import send_mail, EmailMessage, send_mass_mail
+from django.shortcuts import render
+from django.template.loader import render_to_string
 
 from django.views.generic.base import TemplateView
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.views.generic.list import ListView
 from reportlab.pdfgen import canvas
+from xhtml2pdf import pdf
 
 from college.models import Notice
 from esabha import settings
-from social.models import FollowUser, MyPost, MyProfile, PostLike
+
+from social.models import FollowUser, MyPost, MyProfile, PostLike, Question, Feedback
 from django.views.generic.detail import DetailView
 from django.db.models import Q
-from django.views.generic.edit import UpdateView, CreateView, DeleteView
+from django.views.generic.edit import UpdateView, CreateView, DeleteView, FormView
 from django.http.response import HttpResponseRedirect, HttpResponse
-
 
 # Create your views here.
 
@@ -77,7 +80,8 @@ def unlike(req, pk):
 @method_decorator(login_required, name="dispatch")
 class MyProfileUpdateView(UpdateView):
     model = MyProfile
-    fields = ["name", "age", "address", "status", "gender", "phone_no", "description", "pic"]
+    fields = ["name", "age", "address", "status", "gender", "phone_no", "description", "pic", "YOE", "YOP", "YOJ",
+              "ptype", "course", "branch", "grduper", "interper", "highper","myresume"]
 
 
 @method_decorator(login_required, name="dispatch")
@@ -146,38 +150,69 @@ def getfile(request):
     for alumni in employees:
         writer.writerow(
             [alumni.name, alumni.phone_no, alumni.age, alumni.address, alumni.status, alumni.gender, alumni.description,
-             alumni.pic])
+             alumni.pic, alumni.YOE, alumni.YOP, alumni.YOJ, alumni.ptype, alumni.course, alumni.branch, alumni.grduper,
+             alumni.interper, alumni.highper])
     return response
 
 
 def getpdf(request):
+    employees = MyProfile.objects.all()
     response = HttpResponse(content_type='application/pdf')
     response['Content-Disposition'] = 'attachment; filename="file.pdf"'
-    employees = MyProfile.objects.all()
     p = canvas.Canvas(response)
     p.setFont("Times-Roman", 55)
-    p.drawString(100, 700, "Hello, Javatpoint.")
+    p.drawImage(100,700,employees)
+    p.drawString(100, 700,"hello" )
     p.showPage()
     p.save()
     return response
 
 
+
 def mail(request):
     subject = "Greetings"
-    msg     = "Congratulations for your success"
-    to      = "krishnakjee2016@gmail.com"
-    res     = send_mail(subject, msg, settings.EMAIL_HOST_USER, [to])
-    if(res == 1):
+    msg = "Congratulations for your success"
+    to = "krishnakjee2016@gmail.com"
+    res = send_mail(subject, msg, settings.EMAIL_HOST_USER, [to])
+    if (res == 1):
         msg = "Mail Sent Successfuly"
     else:
         msg = "Mail could not sent"
     return HttpResponse(msg)
 
 
+def thanks(request):
+    return render(request, 'social/thanks.html')
 
 
+class Feedback(CreateView):
+    model = Feedback
+    fields = ["feed_name","feed_email","feed_phone_no","feedback","suggetion"]
 
-#
+
+@method_decorator(login_required, name="dispatch")
+class QuestionCreate(CreateView):
+    model = Question
+    fields = ["subject", "msg"]
+
+    def form_valid(self, form):
+        self.object = form.save()
+        self.object.user = self.request.user
+        self.object.save()
+        return HttpResponseRedirect(self.get_success_url())
+
+
+@method_decorator(login_required, name='dispatch')
+class MyList(TemplateView):
+    template_name = "college/mylist.html"
+
+    def get_context_data(self, **kwargs):
+        context = TemplateView.get_context_data(self, **kwargs)
+        context["notices"] = Notice.objects.all().order_by('-id')[:3];
+        context["questions"] = Question.objects.all().order_by('-id')[:3];
+        return context;
+
+
 # @method_decorator(login_required, name="dispatch")    
 # class ProfileUpdateView(UpdateView):
 #     model = Profile
@@ -203,6 +238,12 @@ def mail(request):
 #         context["questions"] = Question.objects.order_by("-id")[:3]
 #         return context;
 # 
-# 
+#  p = canvas.Canvas(response)
+#     p.setFont("Times-Roman", 55)
+#     p.drawImage(100,700,employees)
+#     p.drawString(100, 700,"hello" )
+#     p.showPage()
+#     p.save()
+#     return response
 #     
 #

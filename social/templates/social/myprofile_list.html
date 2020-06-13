@@ -3,11 +3,12 @@
 <div class="p-5">
 <h1 class="myhead2">Profiles </h1>
 <hr>
+	{% if user.is_superuser %}
 	<a class="w3-btn w3-white w3-border w3-border-teal w3-round" href='/social/csv/'>Export All Profiles(CSV)</a>
 	<a class="w3-btn w3-white w3-border w3-border-teal w3-round" href='/social/pdf/'>Export PDF</a>
 	<a class="w3-btn w3-white w3-border w3-border-teal w3-round" href='/social/email/'>Email</a>
 	<a class="w3-btn w3-white w3-border w3-border-teal w3-round" href='/social/massemail/'>Mass Email</a>
-
+	{% endif %}
 	<hr>
 <form class="form-inline">
 <input class="form-control mr-3" placeholder="Search" value="{{ request.GET.si }}" type="text" name="si" />
@@ -24,8 +25,9 @@
 <div class="card h-100">
     <img class="card-img-top" src="/media/{{n1.pic}}" alt="" height="50%">
     <div class="card-body">
-        <h4 class="card-title">{{n1.name}}</h4>
-        <p class="card-text">{{n1.gender}} - {{n1.age}} - {{n1.id}}
+        <h4 class="card-title">{{n1.name | capfirst}}</h4>
+        <h6 class="card-title">{{n1.description | capfirst}}</h6>
+        <p class="card-text">{{n1.course | capfirst}} - {{n1.branch | upper}} - {{n1.YOJ}} - {{n1.YOP}}
         {% if n1.uploaded_by.pic %}
 		<img style="width: 50px; height: 50px;" src="/media/{{n1.uploaded_by.pic}}" class="img-fluid rounded-circle"  />
 		{% endif %}
