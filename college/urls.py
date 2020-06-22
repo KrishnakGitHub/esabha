@@ -9,7 +9,7 @@ urlpatterns = [
     path('notice/', views.NoticeListView.as_view()),
     path('notice/<int:pk>', views.NoticeDetailView.as_view()),
 
-    path('social/', include(social.urls)),
+    path('social/', include('social.urls')),
 
 
     path('', RedirectView.as_view(url="social/")),

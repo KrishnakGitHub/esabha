@@ -1,15 +1,15 @@
 import csv
 
-from django.core.mail import send_mail, EmailMessage, send_mass_mail
-from django.shortcuts import render
-from django.template.loader import render_to_string
+from django.core.mail import send_mail, BadHeaderError, EmailMessage
+from django.core.paginator import Paginator
+from django.shortcuts import render, redirect
 
 from django.views.generic.base import TemplateView
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.views.generic.list import ListView
 from reportlab.pdfgen import canvas
-from xhtml2pdf import pdf
+from requests import request
 
 from college.models import Notice
 from esabha import settings
@@ -17,8 +17,11 @@ from esabha import settings
 from social.models import FollowUser, MyPost, MyProfile, PostLike, Question, Feedback
 from django.views.generic.detail import DetailView
 from django.db.models import Q
-from django.views.generic.edit import UpdateView, CreateView, DeleteView, FormView
+from django.views.generic.edit import UpdateView, CreateView, DeleteView
 from django.http.response import HttpResponseRedirect, HttpResponse
+
+from social.forms import EmailForm
+
 
 # Create your views here.
 
@@ -28,20 +31,26 @@ class AllPost(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = TemplateView.get_context_data(self, **kwargs)
-        postList = MyPost.objects.order_by("-id")
-        context["mypost_list"] = postList
+        postList = MyPost.objects.order_by("-cr_date")
+        paginator = Paginator(postList, 2)
+        page_number = self.request.GET.get('page')
+        context["page_obj"] = paginator.get_page(page_number)
         return context;
 
 
-@method_decorator(login_required, name="dispatch")
 class HomeView(TemplateView):
     template_name = "social/home.html"
 
     def get_context_data(self, **kwargs):
         context = TemplateView.get_context_data(self, **kwargs)
-        postList = MyPost.objects.order_by("-id")
+        postList = MyPost.objects.order_by("-cr_date")[:5]
         context["mypost_list"] = postList
-        context["notice_list"] = Notice.objects.all()
+        context["mypost_count"] = MyPost.objects.count()
+        context["notice_list"] = Notice.objects.all()[:5]
+        context["notice_count"] = Notice.objects.count()
+        context["user_count"] = MyProfile.objects.count()
+        context["faq_list"] = Question.objects.all()
+        context["feed_list"] = Feedback.objects.all()
         return context;
 
 
@@ -81,7 +90,7 @@ def unlike(req, pk):
 class MyProfileUpdateView(UpdateView):
     model = MyProfile
     fields = ["name", "age", "address", "status", "gender", "phone_no", "description", "pic", "YOE", "YOP", "YOJ",
-              "ptype", "course", "branch", "grduper", "interper", "highper","myresume"]
+              "ptype", "course", "branch", "grduper", "interper", "highper", "myresume"]
 
 
 @method_decorator(login_required, name="dispatch")
@@ -106,6 +115,36 @@ class MyPostListView(ListView):
             si = ""
         return MyPost.objects.filter(Q(uploaded_by=self.request.user.myprofile)).filter(
             Q(subject__icontains=si) | Q(msg__icontains=si)).order_by("-id");
+
+
+def Email_Form(request):
+    if request.method == 'GET':
+        form = EmailForm()
+    else:
+        form = EmailForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            subject = form.cleaned_data['subject']
+            to_email = form.cleaned_data['to_email']
+            message = form.cleaned_data['message']
+            from_email = settings.EMAIL_HOST_USER
+            try:
+                send_mail(subject, message, from_email, [to_email])
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return redirect('/success')
+    return render(request, "social/email.html", {'form': form})
+
+
+def SendEmail(request):
+    html_content = "<a href = 'http://krishpy.pythonanywhere.com/' style='position:absolute;'>Build Your Community</a>" \
+                   "<img src='https://gnoptg.dm.files.1drv.com/y4mW604sezd1zDYk4YSPRR_OruFQR0fa5kVlQ36Jerbnn7OZx9LWh21Z6a1zI5l0HAAWNgiP_RaQThrDYGCT2fXnq0EmWFA68cqmh6vW_SI0x3uDH7xXvzlaCS3Aaryh5DU4d0EZousvx0r13fZ21XWK2P3tBBqwFKrzN5PGZx4aXftKn5Mxh5154rDBdSD2EVUF352bcMrL-ryHAARm1nMtA?width=179&height=256&cropmode=none' alt='Build Your Community' width='179' height='256' />"
+    host_email = settings.EMAIL_HOST_USER
+    email = EmailMessage("Invitation to Join SBSSTC Alumni Association", html_content, host_email,
+                         ['krishnakjee2016@gmail.com'])
+    email.content_subtype = "html"
+    res = email.send()
+    return HttpResponse('%s' % res)
 
 
 @method_decorator(login_required, name="dispatch")
@@ -161,12 +200,11 @@ def getpdf(request):
     response['Content-Disposition'] = 'attachment; filename="file.pdf"'
     p = canvas.Canvas(response)
     p.setFont("Times-Roman", 55)
-    p.drawImage(100,700,employees)
-    p.drawString(100, 700,"hello" )
+    p.drawImage(100, 700, employees)
+    p.drawString(100, 700, "hello")
     p.showPage()
     p.save()
     return response
-
 
 
 def mail(request):
@@ -185,9 +223,19 @@ def thanks(request):
     return render(request, 'social/thanks.html')
 
 
-class Feedback(CreateView):
+class Feedback_Form(CreateView):
     model = Feedback
-    fields = ["feed_name","feed_email","feed_phone_no","feedback","suggetion"]
+    fields = ["feed_name", "feed_email", "feed_phone_no", "feedback", "suggetion"]
+
+
+class FeedbackDetailView(TemplateView):
+    template_name = "social/feedback_detail.html"
+
+    def get_context_data(self, **kwargs):
+        context = TemplateView.get_context_data(self, **kwargs)
+        context["feed_obj"] = Feedback.objects.all()
+        context["feed_count"] = Feedback.objects.count()
+        return context;
 
 
 @method_decorator(login_required, name="dispatch")
@@ -213,7 +261,10 @@ class MyList(TemplateView):
         return context;
 
 
-# @method_decorator(login_required, name="dispatch")    
+def successView(request):
+    return HttpResponse('Success! Thank you for your message.')
+
+# @method_decorator(login_required, name="dispatch")
 # class ProfileUpdateView(UpdateView):
 #     model = Profile
 #     fields = ["branch", "sem", "marks_10", "marks_12", "marks_aggr", "rn", "myimg", "myresume", "skills"]

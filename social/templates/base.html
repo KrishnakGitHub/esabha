@@ -1,271 +1,88 @@
 <!DOCTYPE html>
 {% load static %}
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alumni||SBSSTC</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-<!-- JS, Popper.js, and jQuery -->
-<script src="/static/vender/bs/js/bootstrap.min.js"></script>
-<link href="/static/vender/fa/css/font-awesome.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<html lang="en">
+<title>Alumni || SBSSTC</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<!--Bootstrap-->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
 <!-- Main Master Style  CSS  -->
 <link id="cbx-style" data-layout="1" rel="stylesheet" href="/static/css/style-default.min.css" media="all">
+
+<link rel="stylesheet" href="{% static 'css/style_reg.css' %}">
 <style>
-  .input{
-  width: 100%;
-  padding: 12px;
-  border: none;
-  border-radius: 4px;
-  border-bottom: 2px solid #eee;
-  margin: 5px 0;
-  opacity: 0.85;
-  display: inline-block;
-  font-size: 17px;
-  line-height: 20px;
-  text-decoration: none; /* remove underline from anchors */
-}
-
-input:hover,
-.btn:hover {
-  opacity: 1;
-}
-
-input[type=submit]{
-background-color:#45a049;
-}
-
-input[type=submit]:hover {
-  color: #ffff;
-}
-#navbar {
-  overflow: hidden;
-  color:#ffffff;
-  padding: 40px 10px;
-  transition: 0.4s;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 99;
+.responsive {
+  max-width: 100%;
+  height: auto;
 }
 .bgimg {
-  background:url("{% static 'images/evw.png'%}");
+  background:url("{% static 'images/evw.png' %}");
   min-height: 100%;
   background-position: center;
   background-size: cover;
 }
-#overlay {
-  position: fixed; /* Sit on top of the page content */
-  display: none; /* Hidden by default */
-  width: 100%; /* Full width (cover the whole page) */
-  height: 100%; /* Full height (cover the whole page) */
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
-  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
-  cursor: pointer; /* Add a pointer on hover */
-}
-#text{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  font-size: 50px;
-  color: white;
-  transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-}
-.loader {
-  border: 16px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 16px solid #3498db;
-  width: 120px;
-  height: 120px;
-  -webkit-animation: spin 2s linear infinite; /* Safari */
-  animation: spin 2s linear infinite;
-}
 
-/* Safari */
-@-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-#myProgress {
-  width: 100%;
-  background-color: #ddd;
-}
-
-#myBar {
-  width: 10%;
-  height: 30px;
-  background-color: #4CAF50;
-  text-align: center;
-  line-height: 30px;
-  color: white;
-}
-#mySidenav a {
-  position: absolute;
-  right: -80px;
-  transition: 0.3s;
-  padding: 15px;
-  width: 100px;
-  text-decoration: none;
-  font-size: 20px;
-  color: white;
-  border-radius: 0 5px 5px 0;
-}
-
-#mySidenav a:hover {
-  right: 0;
-}
-
-#about {
-  top: 20px;
-  background-color: #4CAF50;
-}
-
-#blog {
-  top: 80px;
-  background-color: #2196F3;
-}
-
-#projects {
-  top: 140px;
-  background-color: #f44336;
-}
-
-#contact {
-  top: 200px;
-  background-color: #555
-}
-.sidepanel  {
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  height: 250px;
-  top: 0;
-  left: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
-}
-
-.sidepanel a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
+.dropdwn{
+  position: relative;
   display: block;
-  transition: 0.3s;
 }
 
-.sidepanel a:hover {
-  color: #f1f1f1;
+.dropdown-content{
+  display: none;
+  text-decoration:none;
 }
 
-.sidepanel .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
+a:hover{
+	text-decoration:none;
 }
 
-.openbtn {
-  font-size: 20px;
-  cursor: pointer;
-  background-color: #111;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-}
-
-.openbtn:hover {
-  background-color:#444;
-}
-.pagination a {
-  color: black;
-  float: left;
-  padding: 8px 16px;
-  text-decoration: none;
-  transition: background-color .3s;
-}
-
-.pagination a.active {
-  background-color: dodgerblue;
-  color: white;
-}
-
-.pagination a:hover:not(.active) {background-color: #ddd;}
-
-.icon-bar {
-  position: fixed;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
-
-.icon-bar a {
+.dropdwn:hover .dropdown-content {
   display: block;
+}
+
+.imgg{
+  position: relative;
+  left: 0px;
+  top: 0px;
+  z-index:1;
+   box-shadow: 10px 10px 5px grey;
+}
+.imtxt{
+  z-index:1;
+  text-shadow: 5px 5px 10px #909090;
+}
+.cont{
+  position: relative;
   text-align: center;
-  padding: 16px;
-  transition: all 0.3s ease;
-  color: white;
-  font-size: 20px;
-}
-
-.icon-bar a:hover {
-  background-color: #000;
-}
-
-.facebook {
-  background: #3B5998;
   color: white;
 }
-
-.twitter {
-  background: #55ACEE;
-  color: white;
+.shadow {
+  position: absolute;
+  background-color:rgb(128,128,128,0.4);
+  width:100%;
+  height:500px;
+  min-height: 100%;
+  padding:128px 16px;
+  background-size: cover;
 }
-
-.google {
-  background: #dd4b39;
-  color: white;
+.bottom-left{
+position: absolute;
+background-color:rgb(128,128,128,0.6);
+text-align: center;
+bottom: 1px;
 }
-
-.linkedin {
-  background: #007bb5;
-  color: white;
+.sec{
+ background-image: url("{% static 'images/evw.png' %}");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
-
-.youtube {
-  background: #bb0000;
-  color: white;
-}
-
-.content {
-  margin-left: 75px;
-  font-size: 30px;
-}
-.site-logo {
-    font-size: 1.5rem; }
- .site-logo a {
-      border: 4px solid #fff;
-      display: inline-block;
-      padding: 5px 10px; }
-bg{
-   background-color:#39809b;
-   color:ebaa5d;
-  }
 .collapsibl {
   background-color: #777;
   color: black;
@@ -281,8 +98,7 @@ bg{
   z-index:15px;
 }
 .collapsibl:hover {
-  color: pink;
-  font-size:24px;
+  color: teal;
   background-color:rbga(255,255,255,0.9);
 }
 .content {
@@ -292,146 +108,128 @@ bg{
   transition: max-height 0.2s ease-out;
   background-color: #f1f1f1;
 }
-.mission{
-background-image:linear-gradient(135deg,transparent, #39809b,transparent,transparent,transparent,transparent,transparent,transparent,transparent, #ebaa5d,transparent);
-}
-.imgg{
-  position: relative;
-  left: 0px;
-  top: 0px;
-  z-index:20;
-   box-shadow: 10px 10px 5px grey;
-}
-.column {
-  float: left;
-  width: 50%;
-  padding: 10px;
-}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-/* Style the buttons */
-.btn {
-  border: none;
-  outline: none;
-  padding: 12px 16px;
-  background-color: #f1f1f1;
+.bl {
+  background-color: #777;
   cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 18px;
+  font-style:Arial;
+  box-shadow:15px 15px 15px rgba(0, 150, 136,0.8);
+  z-index:15px;
 }
-
-.btn:hover {
-  background-color: #ddd;
-}
-
-.btn.active {
-  background-color: #666;
-  color: white;
-}
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 60px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdwn:hover .dropdown-content {
-  display: block;
-}
-
-.desc {
-  padding: 15px;
-  text-align: center;
-}
-
-tr:nth-child(even) {
-            background-color: yellow;
-        }
-tr:nth-child(odd) {
-            background-color: teal;
-        }
-    </style>
-</head>
+</style>
 <body>
-<!-- As a link -->
-<nav class="navbar navbar-light w3-teal">
-  <a class="navbar-brand" href="#"></a>
-</nav>
- <!-- Navbar -->
-  <div class="w3-bar w3-large">
-      <div class="ml-5">
-      <div class="col-sm-2 ml-5 w3-teal p-2 position-absolute" >
-          <img src="{% static 'images/logoG copy.png'%}" alt="SBBSTC LOGO" class="w-100">
-      </div></div>
-    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-    <div class="w3-bar-item w3-button w3-padding-large float-right"></div>
-    <div class="w3-bar-item w3-button w3-padding-large float-right"></div>
-       <div class="w3-bar-item w3-white dropdwn w3-button w3-padding-large w3-hover-teal float-right">
-   <div class="mx-auto text-center">
-{% if user.is_authenticated %}
-       <div class="w-25"><!--{{ user.username }}-{{user.myprofile.pic}}-->
-           <div class="navbar-brand">
-       <img src="/static/{{user.myprofile.pic}}" alt="oops.!" style="width:40px;"></div>
-           <i class="arrow"></i></div>
-    {% else %}
-    <h2 class="position-absolute text-center ">You are not logged OUT....</h2>
-    {% endif %}
 
-       <div class="bg-primary text-white text-center">
+		<!-- Navbar -->
+    <div class="w3-top position-absolute ml-5 w-50 mt-2 " style="z-index:5;">
+		<div class="w-50 ml-5">
+		<img src="{% static 'images/logoG copy.png' %}" class="w-75 p-2 w3-teal">
+		</div>
+    </div>
 
-                {% if user.is_authenticated %}
-           <div class="dropdown-content mr-3 p-5 position-absolute">
-               {% if user %}
-    <a href="/social/myprofile/{{user.id}}" class="row p-2 text-center text-dark w3-hover-teal">My Profile</a>
-               {% endif %}
-    <a href="/social/mypost" class="row p-2 text-center text-dark w3-hover-teal">My Post</a>
-    <a href="/social/allpost" class="row p-2 text-center text-dark w3-hover-teal">Job Board</a>
-    <a href="/social/myprofile" class="row p-2 text-center text-dark w3-hover-teal">Profiles</a>
-    <a href="/accounts/logout" class="row p-2 text-center text-dark w3-hover-teal">Logout</a>
-    {% else %}
-          <a href="/accounts/login" class="row p-2 text-center text-dark w3-hover-teal">Login</a>
-    {% endif %}
-    {% if user.is_superuser %}
-                <a class="row p-2 text-center text-dark w3-hover-teal" href="/admin">Admin</a>
-			{% else %}
-				{% if user.is_authenticated %}
-    <a class="row p-2 text-center text-dark w3-hover-teal" href="/social/myprofile/edit/{{ user.myprofile.id }}">Edit Profile</a>
-				{% endif %}
+	<!-- As a link -->
+	<nav class="w3-bar w3-teal">
+	  <a class="navbar-brand" href="#"></a>
+	</nav>
 
-			{% endif %}
+<div class="w3-bar w3-large w3-top" style="z-index:4;margin-top:0.7%;background-color:white;color:#009688;" id="navbar">
 
-   </div></div>
+        <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large float-right mt-3" href="javascript:void(0);" style="z-index:3;" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
 
 
-   </div> </div>
-          <a href="/social/contact" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-blue float-right mt-3">Contact</a>
-    <a href="/social/about" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-blue float-right mt-3">About</a>
-      <a href="/social/home" class="w3-bar-item w3-button w3-padding-large w3-hover-blue float-right mt-3">Home</a>
+    <div class="w3-bar-item w3-hide-small w3-padding-large" style="width:25%;margin-left:8%;">
+		<img src="{% static 'images/logoG copy.png' %}" alt="oops.!" class="w3-teal p-1" style="width:30%;">
+    </div>
+
+    <div class="dropdwn float-right" style="margin-right:6%;">
+
+    <a href="#" class="w3-bar-item w3-hide-small w3-white w3-button w3-padding-large mr-5" >
+        {% if user.is_authenticated %}
+			<img src="/static/{{user.myprofile.pic}}" alt="oops.!" style="width:40px;">
+            {% else %}
+            <img src="{% static 'images/avatar2.png' %}" alt="oops.!" style="width:40px;">
+            {% endif %}
+	</a>
+
+        	<div class="w3-sidebar p-5 dropdown-content text-center text-white w3-animate-right mr-5" style="background-color:rgba(0, 150, 136,0.5);">
+
+		<div class="w3-container text-center">
+            {% if user.is_authenticated %}
+			<img src="/static/{{user.myprofile.pic}}" style="width:45%;" class="border rounded-circle mt-5"><br><br>
+			<h4><b>{{user.myprofile.name}}</b></h4>
+            {% else %}
+            <img src="{% static 'images/avatar2.png' %}" style="width:45%;" class="border rounded-circle mt-5"><br><br>
+			<h4><b>John Deo</b></h4>
+            {% endif %}
+		</div>
+
+		<br><br>
+		<div class="w3-bar-block">
+            {% if user.is_authenticated %}
+			<a href="/social/myprofile/{{user.id}}" class="w3-bar-item w3-padding text-white">My Profile</a>
+			<a href="/social/mypost" class="w3-bar-item  w3-padding text-white">My Career Post</a>
+			<a href="/social/allpost" class="w3-bar-item  w3-padding text-white">Career Posts</a>
+			<a href="/social/myprofile" class="w3-bar-item  w3-padding text-white">Alumni Directory</a>
+			<a href="/accounts/logout" class="w3-bar-item  w3-padding text-white">Logout</a>
+            {% else %}
+			<a href="/accounts/login" class="w3-bar-item  w3-padding text-white">Login</a>
+			<a href="/accounts/register" class="w3-bar-item  w3-padding text-white">Register</a>
+            {% endif %}
+            {% if user.is_superuser %}
+			<a class="w3-bar-item  w3-padding text-white" href="/admin">Admin</a>
+            {% endif %}
+		</div>
+	</div>
+
+
+	</div>
+           <a href="/social/contact/" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white float-right mt-3">Contact</a>
+        <a href="/social/about/" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white float-right mt-3">About</a>
+    <a href="/social/home/" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white float-right mt-3">Home</a>
+
   </div>
+
+
 
   <!-- Navbar on small screens -->
-  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 1</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 2</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 3</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 4</a>
-  </div>
-</div>
-</div>
+  <div id="" class="w3-top w3-cyan w3-hide-large w3-hide-medium mx-auto" style="z-index:10;">
+  <div id="navDemo" class="w3-sidebar w3-collapse w3-white w3-animate-left" style="width:300px;">
+	<div class="w3-container text-center">
+		<a href="#" onclick="myFunction()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
+		  <i class="fa fa-remove"></i>
+		</a>
+	</div>
+
+	<div class="w3-container text-center">
+		<img src="{% static 'images/avatar2.png' %}" style="width:45%;" class="border rounded-circle mt-5"><br><br>
+		<h4><b>John Deo</b></h4>
+    </div>
+	<br><br><br>
+	<div class="w3-bar-block">
+		<a href="#portfolio" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>PORTFOLIO</a>
+		<a href="#about" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>ABOUT</a>
+		<a href="#contact" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>CONTACT</a>
+	</div>
+
+	<div class="w3-panel w3-bottom">
+		<i class="fa fa-facebook-official w3-hover-opacity"></i>
+		<i class="fa fa-instagram w3-hover-opacity"></i>
+		<i class="fa fa-snapchat w3-hover-opacity"></i>
+		<i class="fa fa-pinterest-p w3-hover-opacity"></i>
+		<i class="fa fa-twitter w3-hover-opacity"></i>
+		<i class="fa fa-linkedin w3-hover-opacity"></i>
+	</div>
+
+  </div></div>
+<br><br>
 
 {% block content %}
-{% endblock %}
 
+{% endblock %}
 <!--Start of Tawk.to Script-->
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
@@ -447,109 +245,62 @@ s0.parentNode.insertBefore(s1,s0);
 <!--End of Tawk.to Script-->
 
 
-    <!--== Footer Area Start ==-->
-<footer id="footer-area">
-    <!-- Footer Widget Start -->
-    <div class="footer-widget section-padding">
-        <div class="container">
-            <div class="row">
-                <!-- Single Widget Start -->
-                <div class="col-lg-4 col-sm-6">
-                    <div class="single-widget-wrap">
-                        <div class="widgei-body">
-                            <div class="footer-about">
-                                <img src="{% static 'images/LogoWG.png' %}" alt="Logo" class="w-25 mx-auto">
-                                <p>We are legend Lorem ipsum dolor sitmet, nsecte ipisicing eit, sed do eiusmod tempor incidunt ut  et do maga aliqua enim ad minim.</p>
-                                <a href="#">Phone: +8745 44 5444</a> <a href="#">Fax: +88474 156 362</a> <br> <a href="#">Email: demoemail@demo.com</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single Widget End -->
+<!-- footer container-->
+<div class="container-fluid w3-teal text-white">
+	<div class="row" style="font-family:Arial;">
+		<div class="col-sm-4 w3-teal p-5">
+			<h5>About SBSSTC</h5><br>
+			<hr class="w3-white"><br>
+			<img src="{% static 'images/logoG copy.png' %}" alt="oops.!" class="w3-teal p-5" style="width:75%;"><br>
+			<p class="w3-text p-5">Shaheed Bhagat Singh College of Engineering & Technology was established in 1995.
+				It is affiliated to PTU, Jalandhar and approved by AICTE, New Delhi.
+				It is located in Ferozepur district in the Indian state of Punjab.</p>
+		</div>
+		<div class="col-sm-4 p-5 w3-teal">
+			<h5>JOIN Us</h5><br>
+			<hr class="w3-white"><br>
+				<a href="/acccounts/register/" type="button " class="w3-btn p-3 w3-cyan text-white w3-hover-green mt-5" style="width:100%;">Career Network</a>
+			<br>
+				<a href="/accounts/register/" type="button " class="w3-btn p-3 w3-cyan text-white w3-hover-green mt-3" style="width:100%;">Alumni Network</a>
+		</div>
+		<div class="col-sm-4 w3-teal text-white p-5">
+			<h5>Quik LInks</h5><br>
+			<hr class="w3-white"><br>
+			<ul>
+			<li><p><a class="text-white" href="#">Home</a></p></li>
+			<li><p><a class="text-white" href="aboutus.html">About</a></p></li>
+			<li><p><a class="text-white" href="#">Events</a></p></li>
+			<li><p><a class="text-white" href="#">News</a></p></li>
+			<li><p><a class="text-white" href="#">Support</a></p></li>
+			<li><p><a class="text-white" href="#">Contribute</a></p></li>
+			</ul>
+		</div>
+	</div>
+</div>
 
-                <!-- Single Widget Start -->
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-widget-wrap">
-                        <h4 class="widget-title">Get In Touch</h4>
-                        <div class="widgei-body">
-                            <p>We are legend Lorem ipsum dolor sitmet, nsecte ipisicing eit, sed</p>
-                            <div class="newsletter-form">
-                                <form id="cbx-subscribe-form" role="search">
-                                    <input type="email" placeholder="Enter Your Email" id="subscribe" required="">
-                                    <button type="submit"><i class="fa fa-send"></i></button>
-                                </form>
-                            </div>
-                            <div class="footer-social-icons">
-                                <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
-                                <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
-                                <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
-                                <a href="#" target="_blank"><i class="fa fa-vimeo"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single Widget End -->
 
-                <!-- Single Widget Start -->
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-widget-wrap">
-                        <h4 class="widget-title">Usefull Link</h4>
-                        <div class="widgei-body">
-                            <ul class="double-list footer-list clearfix">
-                                <li><a href="#">Pricing Plan</a></li>
-                                <li><a href="#">Categories</a></li>
-                                <li><a href="#">Populer Deal</a></li>
-                                <li><a href="#">FAQ</a></li>
-                                <li><a href="#">Support</a></li>
-                                <li><a href="#">Pricing Plan</a></li>
-                                <li><a href="#">Categories</a></li>
-                                <li><a href="#">Populer Deal</a></li>
-                                <li><a href="#">FAQ</a></li>
-                                <li><a href="#">Support</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single Widget End -->
 
-                <!-- Single Widget Start -->
-                <div class="col-lg-2 col-sm-6">
-                    <div class="single-widget-wrap">
-                        <h4 class="widget-title">College</h4>
-                        <div class="widgei-body">
-                            <ul class="footer-list clearfix">
-                                <li><a href="#">Pricing Plan</a></li>
-                                <li><a href="#">Categories</a></li>
-                                <li><a href="#">Populer Deal</a></li>
-                                <li><a href="/social/question/create/">FAQ</a></li>
-                                <li><a href="#">Support</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single Widget End -->
-            </div>
-        </div>
-    </div>
-    <!-- Footer Widget End -->
 
-    <!-- Footer Bottom Start -->
-    <div class="footer-bottom">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="footer-bottom-text">
-                        <p>All Rights Reserved.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Footer Bottom End -->
+<!--footer-->
+<footer style="background-color:teal;text-align:center;color:white;padding:2px;">
+<p>krishnawebdevpro&team@copyright | 2019  </p>
 </footer>
-<!--== Footer Area End ==-->
 
 
+<script>
+// Script to open and close sidebar
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+}
+
+function w3_close() {
+	if (screen.width < 600px ){
+    document.getElementById("mySidebar").style.display = "none";
+	}
+    document.getElementById("myOverlay").style.display = "none";
+}
+</script>
 
 
 
@@ -569,16 +320,31 @@ window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
   if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-    document.getElementById("navbar").style.padding = "2px 10px";
-    document.getElementById("navbar").style.background = "blue";
-    document.getElementById("logo").style.fontSize = "0px";
-    document.getElementById("im").style.width = "0px";
+    document.getElementById("navbar").style.marginTop = "0%";
+    document.getElementById("navbar").style.backgroundColor = "#009688";
+    document.getElementById("navbar").style.color = "white";
   } else {
-    document.getElementById("navbar").style.padding = "0px 10px";
-    document.getElementById("navbar").style.background = "lightblue";
-    document.getElementById("logo").style.fontSize = "25px";
-    document.getElementById("im").style.width = "5%";
+    document.getElementById("navbar").style.marginTop = "0.7%";
+    document.getElementById("navbar").style.backgroundColor = "white";
+    document.getElementById("navbar").style.color = "#009688";
   }
+}
+</script>
+
+<script>
+var coll = document.getElementsByClassName("collapsibl");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
+  });
 }
 
 </script>

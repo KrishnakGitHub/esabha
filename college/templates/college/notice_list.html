@@ -1,10 +1,22 @@
 {% extends 'base.html' %}
 
-{% block content %}
-<h1>Notice List</h1>
-
-{% for n1 in notice_list %}
-<h3><a href='/college/notice/{{n1.id}}'>{{n1.subject}}</a></h3>
-{% endfor %}
+<div class="tabcontent" id="myid" style="display:block;"><h2 class="w3-animate-top w3-teal text-white imgg text-center">Recent News</h2><hr>
+      <ul class="w3-ul p-5">
+    {% for n2 in notice_list %}
+    <li class=" row  text-center w3-animate-left">
+        <div class="col-lg-3 p-3 text-white bgimg">
+            <img class="img-fluid" src="/media/{{n2.pic}}">
+        </div>
+        <div class="col-lg-7">
+        <div class="h6 text-left">{{n2.subject}}</div>
+            <div class="row">
+                <div class="col-lg-5"><span class="w3-small">{{n2.cr_date | date:"D d M Y"}}</span></div>
+                <div class="col-lg-5"><span><a class="w3-right w3-small" href='/college/notice/{{n2.id}}'>Read More</a></span></div>
+                <div class="col-lg-2"> <a class="w3-right" href='/social/notice/delete/{{n1.id}}'><span class="fa fa-trash"></span></a></div>
+            </div></div>
+      </li>
+    {% endfor %}
+      </ul>
+        </div>
 {% endblock %}
 

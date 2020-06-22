@@ -2,18 +2,15 @@
 {% block content %}
 {% load crispy_forms_tags %}
 
-<main class="p-5">
-<div class="row">
-	<div class="col-sm-6 offset-sm-3">
-	<h1 class="myhead2">Profile Update</h1>
+<form class="w-100" id="msform" enctype="multipart/form-data" method="post">
+	{% csrf_token %}
+	<fieldset>
+		<h2 class="fs-title">Update Your Profile</h2>
+		<img src="/static/{{user.myprofile.pic}}" style="width:25%;" class="border rounded-circle mt-5"><br><br>
 		<hr>
-		<form enctype="multipart/form-data" method="post">
-		{% csrf_token %}
-		{{form | crispy}}
+		<br><br>
+		{{form}}
 		<input class="btn btn-dark my-3" type="submit" />
-		</form>
-	
-	</div>
-</div>
-</main>
+	</fieldset>
+</form>
 {% endblock %}

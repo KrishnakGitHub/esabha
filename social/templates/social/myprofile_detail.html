@@ -38,7 +38,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
     <hr>
     <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus.</p>
 
-    <form action="/action_page.php" target="_blank">
+    <form action="/action_page.php" target="_blank" method="post">
       <div class="w3-section">
         <label>Name</label>
         <input class="w3-input w3-border" type="text" required name="Name">
@@ -85,6 +85,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 	</div>
 </div>
 <a href="/social/myprofile" class="w3-btn w3-white w3-border w3-border-teal w3-round">Back</a>
+<a href="/social/emailform" class="w3-btn w3-white w3-border w3-border-teal w3-round">Email Form</a>
 	{% if request.user.id == myprofile.id %}
 	<a class="w3-btn w3-white w3-border w3-border-teal w3-round" href='/social/myprofile/edit/{{ myprofile.id }}'>Edit</a>
 	{% endif %}

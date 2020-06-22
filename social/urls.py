@@ -30,10 +30,16 @@ urlpatterns = [
     path('allpost/',views.AllPost.as_view()),
     path('csv/',views.getfile),
     path('pdf/',views.getpdf),
-    path('email/',views.mail),
+    path('email1/',views.mail),
     path('thanks/',views.thanks),
-    path('feedback/',views.Feedback.as_view(success_url="/social/thanks")),
+    path('feedback/',views.Feedback_Form.as_view(success_url="/social/thanks")),
+    path('fdd/<int:pk>',views.FeedbackDetailView.as_view()),
     path('faq/',views.QuestionCreate.as_view(success_url="/social/thanks")),
+	
+	
+	path('emailform/', views.Email_Form),
+    path('success/', views.successView),
+    path('email2/', views.SendEmail),
 
 
 

@@ -5,6 +5,8 @@ from django.core.validators import MinValueValidator, RegexValidator
 
 
 # Create your models here.
+
+
 class MyProfile(models.Model):
     name = models.CharField(max_length=100)
     user = models.OneToOneField(to=User, on_delete=CASCADE)
@@ -90,12 +92,14 @@ class FollowUser(models.Model):
 
 class Feedback(models.Model):
     feed_name = models.CharField(max_length=200)
-    suggetion = models.CharField(max_length=200)
-    feedback = models.CharField(max_length=200)
-    feed_phone_no = models.CharField(validators=[RegexValidator("^0?[5-9]{1}\d{9}$")], max_length=15, null=True,
+    suggetion = models.TextField(max_length=200)
+    feedback = models.IntegerField()
+    feed_phone_no = models.CharField( max_length=15, null=True,
                                      blank=True)
-    feed_email = models.CharField(max_length=300)
+    feed_email = models.EmailField(max_length=200)
     feed_date = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return "%s" % self.feed_email
 
 
 class Question(models.Model):

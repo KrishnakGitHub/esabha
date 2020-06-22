@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<br><br>
+<br><br>
+<br><br>
+<div class="container-fluid">
+        <h1>Important Feedbacks</h1><hr>
+<div class="row p-5">
+{% for fd in feed_obj %}
+	<div class="col-sm-4 p-4">
+<div class="card h-100 w3-cyan text-white">
+    <div class="card-body">
+        <h4 class="card-title">{{fd.feed_name | capfirst}}</h4>
+        <h6 class="card-title">{{fd.feedback | capfirst}} - {{fd.feed_date}}</h6>
+        <h6 class="card-title">{{fd.feed_email}} - {{fd.feed_phone_no}}</h6>
+        <p class="card-text">{{fd.suggetion | capfirst}}</p>
+        </div>
+</div>
+
+	</div>
+{% endfor %}
+</div>
+</div></div></div>
+{% endblock %}

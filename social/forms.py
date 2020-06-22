@@ -17,11 +17,19 @@ class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = MyProfile
         fields = (
-        "name", "age", "address", "status", "gender", "phone_no", "description", "pic", "YOE", "YOP", "YOJ", "ptype",
-        "course", "branch", "grduper", "interper", "highper","myresume")
+            "name", "age", "address", "status", "gender", "phone_no", "description", "pic", "YOE", "YOP", "YOJ",
+            "ptype",
+            "course", "branch", "grduper", "interper", "highper", "myresume")
 
 
 class FeedbackForm(forms.ModelForm):
     class Meta:
         model = Feedback
-        fields = ("feed_name","feed_email","phone_no","feedback","suggetion")
+        fields = ("feed_name", "feed_email", "feed_phone_no", "feedback", "suggetion")
+
+
+class EmailForm(forms.Form):
+    name = forms.CharField(required=True)
+    to_email = forms.EmailField(required=True)
+    subject = forms.CharField(required=True)
+    message = forms.CharField(widget=forms.Textarea, required=True)

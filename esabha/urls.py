@@ -8,7 +8,7 @@ from esabha import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('registration.backends.default.urls')),
-
+    path('college/',include('college.urls')),
     path('social/', include('social.urls')), 
     path('', RedirectView.as_view(url="social/")),    
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
