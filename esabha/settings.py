@@ -127,15 +127,16 @@ STATIC_URL = '/static/'
 ACCOUNT_ACTIVATION_DAYS=3
 
 EMAIL_HOST= 'smtp.gmail.com'
-EMAIL_HOST_USER= 'krishnagammingadda@gmail.com'
-EMAIL_HOST_PASSWORD= 'passwordpatanih1'
+EMAIL_HOST_USER= 'abc@gmail.com'
+EMAIL_HOST_PASSWORD= '*******'
 EMAIL_PORT= 587
 EMAIL_USE_TLS= True
-DEFAULT_FROM_EMAIL= "krishnagammingadda@gmail.com"
+DEFAULT_FROM_EMAIL= "abc@gmail.com"
 
 LOGIN_REDIRECT_URL = "/"
 
-PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
+PROJECT_ROOT = os.path.realpath(os.pat
+h.dirname(__file__))
 MEDIA_ROOT = PROJECT_ROOT + '/static/'
 MEDIA_URL = '/media/' 
 
