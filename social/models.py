@@ -107,3 +107,9 @@ class Question(models.Model):
     msg = models.TextField()
     cr_date = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(to=User, on_delete=CASCADE, null=True, blank=True)
+
+class Notice(models.Model):
+    subject = models.CharField(max_length=100)
+    msg = models.TextField()
+    cr_date = models.DateTimeField(auto_now_add = True)
+    pic = models.ImageField(upload_to="images\\", null=True)

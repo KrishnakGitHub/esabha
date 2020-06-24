@@ -1,5 +1,5 @@
 from django.contrib import admin
-from social.models import FollowUser, MyPost, MyProfile, PostComment, PostLike, Feedback, Question
+from social.models import FollowUser, MyPost, MyProfile, PostComment, PostLike, Feedback, Question,Notice
 from django.contrib.admin.options import ModelAdmin
 
 
@@ -67,3 +67,9 @@ class QuestionAdmin(ModelAdmin):
 
 
 admin.site.register(Question, QuestionAdmin)
+
+class NoticeAdmin(ModelAdmin):
+    list_display = ["subject", "cr_date"]
+    search_fields = ["subject", "msg"]
+    list_filter = ["cr_date"]
+admin.site.register(Notice, NoticeAdmin)

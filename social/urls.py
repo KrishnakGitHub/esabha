@@ -41,6 +41,9 @@ urlpatterns = [
     path('success/', views.successView),
     path('email2/', views.SendEmail),
 
+    path('notice/', views.NoticeListView.as_view()),
+    path('notice/<int:pk>', views.NoticeDetailView.as_view()),
+
 
 
 

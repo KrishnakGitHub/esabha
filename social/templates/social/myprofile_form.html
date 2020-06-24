@@ -1,16 +1,48 @@
 {% extends 'base.html' %}
 {% block content %}
-{% load crispy_forms_tags %}
+<style>
+#leftPanel{
+    background-color:#0079ac;
+    color:#fff;
+/*     text-align: center; */
+}
 
-<form class="w-100" id="msform" enctype="multipart/form-data" method="post">
-	{% csrf_token %}
-	<fieldset>
-		<h2 class="fs-title">Update Your Profile</h2>
-		<img src="/static/{{user.myprofile.pic}}" style="width:25%;" class="border rounded-circle mt-5"><br><br>
-		<hr>
-		<br><br>
-		{{form}}
-		<input class="btn btn-dark my-3" type="submit" />
-	</fieldset>
+#rightPanel{
+    min-height:500px;
+  min_width:300px;
+}
+
+/* Credit to bootsnipp.com for the css for the color graph */
+.colorgraph {
+  height: 20px;
+  border-top: 0;
+/*   background: #c4e17f; */
+  border-radius: 5px;
+  background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+}
+input,textarea{padding:8px;display:block;border:none;border-bottom:1px solid #ccc;width:100%;margin-top:5%;}
+select{padding:9px 0;width:100%;border:none;border-bottom:1px solid #ccc}
+label{
+color:cyan;
+padding:2%;
+margin-bottom:5%;
+display:inline;
+}
+field{
+margin:5%;
+}
+</style>
+<br><br>
+<div class="container p-5 w3-teal">
+<form id="msform" class="w-100 p-5" enctype="multipart/form-data" method="post">
+    {% csrf_token %}
+    <hr class="colorgraph mb-5">
+{{form}}
+    <hr class="colorgraph">
+<input type="submit" name="Submit" class="next action-button" />
 </form>
+</div>
 {% endblock %}

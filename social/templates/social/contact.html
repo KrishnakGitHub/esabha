@@ -1,39 +1,74 @@
 {% extends 'base.html' %}
 {% block content %}
-<main class="p-5">
 
+<style>
+table {
+  width:100%;
+}
+table, th, td {
+  border: 0px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+#t01 tr:nth-child(even) {
+  background-color: #eee;
+}
+#t01 tr:nth-child(odd) {
+ background-color: #fff;
+}
+#t01 th {
+  background-color: black;
+  color: white;
+}
+#leftPanel{
+    background-color:#0079ac;
+    color:#fff;
+/*     text-align: center; */
+}
+
+#rightPanel{
+    min-height:500px;
+  min_width:300px;
+}
+
+/* Credit to bootsnipp.com for the css for the color graph */
+.colorgraph {
+  height: 20px;
+  border-top: 0;
+/*   background: #c4e17f; */
+  border-radius: 5px;
+  background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+}
+
+</style>
+<br><br><br>
+<br>
+<div class="container">
+		<div class="m-3 h4 text-uppercase font-weight-bold">About</div>
+	<hr class="colorgraph m-5">
 <div class="row">
-	<div class="col">
-	<h1 class="myhead2">Contact</h1>
-		<hr>
-	</div>
-</div>
-<div class="row">
-	<div class="col-sm-6">
-	<form>
-	<input class="form-control" type="text" name="uname" placeholder="Name" /><br>
-	<input class="form-control" type="email" name="email" placeholder="email" /><br>
-	<input class="form-control" type="tel" name="phone_no" placeholder="Phone No" /><br>
-	<textarea class="form-control"  placeholder="MSG"></textarea><br>
-	<button class="btn btn-dark btn-block" type="submit">Submit</button>
-	</form>
-	</div>
-	<div class="col-sm-6">
+	<div class="col m-5">
+                         <ol class="text-info bg-light">
+                            <div class="text-uppercase font-weight-bold">Contact</div><hr>
 	<p>
-	<strong><span class="fa fa-map-marker mx-2"></strong> National Corporate Park, 117, Great Eastern Rd, Geeta Nagar, Choubey Colony, Samta Colony, Raipur, Chhattisgarh 492001<br><br>
-	<strong><span class="fa fa-phone mx-2"></strong> 9993202xxxx<br><br>
-	<strong><span class="fa fa-fax mx-2"></strong> 9993202xxxx<br><br>
-	<strong><span class="fa fa-globe mx-2"></strong> http://blabla.com<br><br>
-	</p>
+		<strong><span class="fa fa-map-marker mx-2"></span></strong> National Corporate Park, 117, Great Eastern Rd, Geeta Nagar, Choubey Colony, Samta Colony, Raipur, Chhattisgarh 492001<br><br>
+		<strong><span class="fa fa-phone mx-2"></span></strong> 9993202xxxx<br><br>
+		<strong><span class="fa fa-fax mx-2"></span></strong> 9993202xxxx<br><br>
+		<strong><span class="fa fa-globe mx-2"></span></strong> http://blabla.com<br><br>
+	</p></ol>
+</div>
+	<div class="col p-5">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d54758.04492104685!2d74.5892516951115!3d30.93201110637642!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb035ea11d04393c4!2sSBSSTC%20College!5e0!3m2!1sen!2sin!4v1593000240355!5m2!1sen!2sin" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe></div>
 	</div>
-</div>
-<div class="row my-5">
-<div class="col-sm-8 offset-sm-2">
-<div class="embed-responsive embed-responsive-16by9">
-	<iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14874.742904550822!2d81.6111144!3d21.2443074!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x9ed6532a6f04f63c!2sEffCon+Technologies!5e0!3m2!1sen!2sin!4v1563201346331!5m2!1sen!2sin" frameborder="0" style="border:0" allowfullscreen></iframe>
-</div>
-</div>
+
+	<p>* If You have any query you can send message in bellow chatbot </p>
+	<hr class="colorgraph m-5">
 </div>
 
-</main>
 {% endblock %}

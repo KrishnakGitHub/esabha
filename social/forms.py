@@ -17,9 +17,8 @@ class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = MyProfile
         fields = (
-            "name", "age", "address", "status", "gender", "phone_no", "description", "pic", "YOE", "YOP", "YOJ",
-            "ptype",
-            "course", "branch", "grduper", "interper", "highper", "myresume")
+            "name", "gender","ptype", "pic","age","phone_no","address","course", "branch","YOP", "YOJ","highper","interper","grduper",
+            "status","YOE", "description","myresume")
 
 
 class FeedbackForm(forms.ModelForm):

@@ -55,7 +55,7 @@
     <div class="row">
     <div class="col-lg-2 col-md-2 col-sm-2 mt-5">
         <div><a class=" ml-0 w-100 w3-button w3-cyan text-white w3-border w3-border-white  w3-hover-green p-5 imgg mb-2"  onclick="openCity(event, 'myid')">Recent News</a></div>
-        <div><a class=" w-100 w3-button w3-cyan text-white w3-border w3-border-white  w3-hover-green p-5 imgg mb-2"  onclick="openCity(event, 'myid1')">Recent Events</a></div>
+        <div><a class=" w-100 w3-button w3-cyan text-white w3-border w3-border-white  w3-hover-green p-5 imgg mb-2"  onclick="openCity(event, 'myid1')">Upcoming Events</a></div>
         <div><a class=" w-100 w3-button w3-cyan text-white w3-border w3-border-white  w3-hover-green p-5 imgg mb-2"  onclick="openCity(event, 'myid2')">Recent Jobs</a></div>
         <div><a class=" w-100 w3-button w3-cyan text-white w3-border w3-border-white  w3-hover-green p-5 imgg mb-2"  onclick="openCity(event, 'myid3')">FeedBack Form</a></div>
         <div><a class=" w-100 w3-button w3-cyan text-white w3-border w3-border-white  w3-hover-green p-5 imgg mb-2"  onclick="openCity(event, 'myid4')">FAQ</a></div>
@@ -73,14 +73,41 @@
         <div class="h6 text-left">{{n2.subject}}</div>
             <div class="row">
                 <div class="col-lg-5"><span class="w3-small">{{n2.cr_date | date:"D d M Y"}}</span></div>
-                <div class="col-lg-5"><span><a class="w3-right w3-small" href='/college/notice/{{n2.id}}'>Read More</a></span></div>
+                <div class="col-lg-5"><span><a class="w3-right w3-small" href='/social/notice/{{n2.id}}'>Read More</a></span></div>
                 <div class="col-lg-2"> <a class="w3-right" href='/social/notice/delete/{{n1.id}}'><span class="fa fa-trash"></span></a></div>
             </div></div>
       </li>
     {% endfor %}
       </ul>
         </div>
-        <div class="tabcontent" id="myid1" style="display:none;"><h2 class="w3-animate-top w3-teal imgg text-center">Recent Events</h2><hr>
+        <div class="tabcontent" id="myid1" style="display:none;"><h2 class="w3-animate-top w3-teal imgg text-center">Upcoming Events</h2><hr>
+
+            <div class="container p-5 mt-5 mx-auto">
+	<div class="h5 bg-white p-2 float-right border text-dark position-absolute text-center" style="z-index:2;
+   box-shadow: 10px 10px 5px grey;font-size:1.5vw;">Upcoming Events</div><hr class="w-100" size="w-100">
+	<div class="row p-5 w3-teal imgg mt-3">
+		<div class="col-lg-6">
+            <img src="{% static 'images/2.png'%}" alt="no img" class="w-100 mt-5">
+			<div class="p-2 text-center bg-white text-dark mt-2" style="font-size:1.2vw;">it's 27 Febuary 2019</div>
+		</div>
+		<div class="col-lg-6 text-white mt-5">
+			<div class="row p-2">
+				<div class="col-lg-1 col-md-1 col-sm-1  p-1 mr-1 bg-dark text-center border border-secondry"><p class="text-center" id="demoday"></p></div>
+				<div class="col-lg-1 col-md-1 col-sm-1 p-1 mr-1 bg-dark text-center border border-secondry"><p class="text-center" id="demohr"></p></div>
+				<div class="col-lg-1 col-md-1 col-sm-1 p-1 mr-1 bg-dark text-center border border-secondry"><p class="text-center" id="demomin"></p></div>
+				<div class="col-lg-1 col-md-1 col-sm-1 p-1 mr-1 bg-dark text-center border border-secondry"><p class="text-center" id="demosec"></p></div>
+			</div>
+			<div class="p-2">
+				<div class="mt-2" style="font-size:2vw;">We are going to arrange a get together.</div>
+				<p class="mt-2" style="font-size:1.2vw;" >Hello everyone lkoan xk akndokno kaonskxjlna alksnckcnals
+				asjnccjn loaks lasjsn lasccljs alksjccl alsjcnacla lasc alsscla asmakasm asjs a ajakllskd
+				aldlmla.<p>
+			</div>
+			 <button class="w3-button w3-blue w3-border w3-border-white w3-hover-cyan " style="font-size:1.5vw;padding-left:2.3%;padding-right:2.3%;">Join with Us</button>
+		</div>
+	</div>
+</div>
+
         </div>
         <!--Recent jobs-->
         <div class="tabcontent" id="myid2" style="display:none;"><h2 class="w3-animate-top w3-teal imgg text-center">Recent Jobs</h2><hr>
@@ -122,7 +149,7 @@
 			<h1 class="w3-animate-top w3-teal imgg text-center">FAQ</h1><br>
             {% for ob in faq_list %}
 			<hr class="w-100">
-			<div class="container w-75">
+			<div class="">
 
 					<button class="collapsibl w-100 bg-white"><span style="margin-left:18px;">{{ob.subject}} </span><span class="float-right">{{ob.cr_date}}</span></button>
 						<div class="content">
@@ -196,20 +223,24 @@
 </div-->
 
 <br><br>
-<div class="container-fluid sec mx-auto text-center p-5">
-    <div class="row p-5 m-5 mx-auto text-center" style="background-color:rgba(0, 150, 136,0.6);">
-        <div class="col-lg-3 p-5 w3-cyan text-white bl" style="margin-left:10%;">
-            <p> Registerd Profiles </p>
-            <h1>{{user_count}} +</h1>
+<div class="container-fluid sec text-center p-5">
+    <div class="row p-5 m-5 text-center" style="background-color:rgba(0, 150, 136,0.6);">
+        <div class="col-lg col-md col-sm w3-cyan m-2 p-5 text-white" >
+            <p style="font-size:1.5vw;"> Registerd Profiles </p>
+            <h1 style="font-size:1.5vw;">{{user_count}} +</h1>
         </div>
-        <div class="col-lg-3 p-5 ml-5 w3-cyan text-white bl">
-            <p> Posts </p>
-            <h1>{{mypost_count}} +</h1>
+        <div class="col-lg col-md col-sm w3-cyan m-2 p-5 text-white">
+            <p style="font-size:1.5vw;"> Posts </p>
+            <h1 style="font-size:1.5vw;">{{mypost_count}} +</h1>
         </div>
-        <div class="col-lg-3 p-5 ml-5 w3-cyan text-white bl">
-            <p>Events</p>
-            <p id="demo"></p>
-            <h2>0 +</h2>
+        <div class="col-lg col-md col-sm w3-cyan m-2 p-5 text-white">
+            <p style="font-size:1.5vw;">Events</p>
+            <p id="demo" style="font-size:1.5vw;"></p>
+            <h2 style="font-size:1.5vw;">0 +</h2>
+        </div>
+        <div class="col-lg col-md col-sm w3-cyan m-2 p-5 text-white">
+            <p style="font-size:1.5vw;">Feedbacks</p>
+            <h2 style="font-size:1.5vw;">{{feed_count}} +</h2>
         </div>
     </div>
 </div>

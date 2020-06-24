@@ -1,17 +1,82 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="p-5">
-	<h1 class="myhead2">{{mypost.subject}}</h1>
-	<hr>
+<style>
+table {
+  width:100%;
+}
+table, th, td {
+  border: 0px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+#t01 tr:nth-child(even) {
+  background-color: #eee;
+}
+#t01 tr:nth-child(odd) {
+ background-color: #fff;
+}
+#t01 th {
+  background-color: black;
+  color: white;
+}
+#leftPanel{
+    background-color:#0079ac;
+    color:#fff;
+/*     text-align: center; */
+}
+
+#rightPanel{
+    min-height:500px;
+  min_width:300px;
+}
+
+/* Credit to bootsnipp.com for the css for the color graph */
+.colorgraph {
+  height: 20px;
+  border-top: 0;
+/*   background: #c4e17f; */
+  border-radius: 5px;
+  background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+}
+
+</style>
+<br><br><br>
+<br>
+<div class="container">
+		<div class="m-3 h4 text-uppercase font-weight-bold">Job Details</div>
+	<hr class="colorgraph m-5">
 <div class="row">
-	<div class="col-sm-6">
-	<p><strong>MSG :: </strong> {{mypost.msg}}</p>
-	<p><strong>Date :: </strong> {{mypost.cr_date | date:"d/m/y"}}</p>
-	</div>
-	<div class="col-sm-6">
+	<div class="col m-5">
+<table>
+                        <tr class="text-info bg-light">
+                            <td class="text-uppercase font-weight-bold">Subject</td>
+                            <td class="text-uppercase font-weight-bold">{{mypost.subject}}</td>
+                        </tr>
+                        <tr class="text-info bg-light">
+                            <td class="text-uppercase font-weight-bold">Date</td>
+                            <td class="text-uppercase font-weight-bold">{{mypost.cr_date | date:"d/m/y"}}</td>
+                        </tr>
+                         <tr class="text-info bg-light">
+                            <td class="text-uppercase font-weight-bold">Message</td>
+                            <td class="text-uppercase font-weight-bold">{{mypost.msg}}</td>
+                        </tr>
+
+</table>
+</div>
+	<div class="col p-5">
 		<img class="img-fluid" src="/media/{{mypost.pic}}" />
 	</div>
+	</div><a href="/social/mypost" class="w3-btn w3-white w3-border w3-border-teal w3-round m-5">Back</a>
+	<br><br>
+	<hr class="colorgraph m-5">
 </div>
-<a href="/social/mypost" class="w3-btn w3-white w3-border w3-border-teal w3-round">Back</a>
-</div>
+
+
+
 {% endblock %}

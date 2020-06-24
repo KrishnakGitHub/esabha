@@ -3,91 +3,259 @@
 {% block content %}
 <style>
 html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+body{
+background:#ffffff;
+}
+li{
+list-style-type:none;
+}
+a{text-decoration:none;
+color:#fff;
+}
+a:hover{
+text-decoration:none;
+color:#fff;
+cursor: pointer;
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 40%;
+  border-radius: 5px;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+img {
+  border-radius: 5px 5px 0 0;
+}
+
+.container1 {
+  padding: 2px 16px;
+}
+table {
+  width:100%;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+#t01 tr:nth-child(even) {
+  background-color: #eee;
+}
+#t01 tr:nth-child(odd) {
+ background-color: #fff;
+}
+#t01 th {
+  background-color: black;
+  color: white;
+}
+#leftPanel{
+    background-color:#0079ac;
+    color:#fff;
+/*     text-align: center; */
+}
+
+#rightPanel{
+    min-height:500px;
+  min_width:300px;
+}
+
+/* Credit to bootsnipp.com for the css for the color graph */
+.colorgraph {
+  height: 20px;
+  border-top: 0;
+/*   background: #c4e17f; */
+  border-radius: 5px;
+  background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+}
+
 </style>
+<br><br><br>
+<body>
+
+	<div class="container-fluid">
+        <div class=" row p-5">
+					<li><a class="w3-btn w3-teal w3-border w3-border-teal w3-round" onclick="openCity('profile')">Profile</a></li><hr>
+					<li><a class="w3-btn w3-teal w3-border w3-border-teal w3-round ml-2" onclick="openCity('education')">Education</a></li><hr>
+					<li><a class="w3-btn w3-teal w3-border w3-border-teal w3-round ml-2" onclick="openCity('exp')">Skills and Experience</a></li><hr>
+					<li><a class="w3-btn w3-teal w3-border w3-border-teal w3-round ml-2" onclick="openCity('contact')">Contact</a></li><hr>
+                    <li>
+            	        {% if request.user.id == myprofile.id %}
+	                        <a class="w3-btn w3-teal w3-border w3-border-teal w3-round ml-2" href='/social/myprofile/edit/{{ myprofile.id }}'>Update Profile</a>
+	                    {% endif %}
+                    </li>
+				</div>
+        <hr>
+    <div class="row p-5">
+        <div class="col-lg-3">
+        <div class="w-100 card p-1">
+          <img src="/media/{{myprofile.pic}}" alt="Avatar" style="width:100%">
+          <div class="container1">
+            <h4><b>{{myprofile.name}}</b></h4>
+            <p>{{myprofile.description}}</p>
+          </div>
+        </div>
+        </div>
+
+        <div class="col-lg-6 p-5 ml-5">
+            <div id="profile" class="page-content city" style="">
+                <div class="h4 text-uppercase font-weight-bold m-5">Profile</div><hr class="colorgraph mb-5">
+                        <table>
+                        <tr class="text-info bg-light">
+                            <td class="text-uppercase font-weight-bold">Name</td>
+                            <td class="text-uppercase font-weight-bold">{{myprofile.name}}</td>
+                        </tr>
+                        <tr class="text-info bg-light">
+                            <td class="text-uppercase font-weight-bold">Profile Type</td>
+                            <td class="text-uppercase font-weight-bold">{{myprofile.ptype}}</td>
+                        </tr>
+                         <tr class="text-info bg-light">
+                            <td class="text-uppercase font-weight-bold">Gender</td>
+                            <td class="text-uppercase font-weight-bold">{{myprofile.gender}}</td>
+                        </tr>
+                         <tr class="text-info bg-light">
+                            <td class="text-uppercase font-weight-bold">Age</td>
+                            <td class="text-uppercase font-weight-bold">{{myprofile.age}}</td>
+                        </tr>
+                         <tr class="text-info bg-light">
+                            <td class="text-uppercase font-weight-bold">Year Of Joining</td>
+                            <td class="text-uppercase font-weight-bold">{{myprofile.YOJ}}</td>
+                        </tr>
+                         <tr class="text-info bg-light">
+                            <td class="text-uppercase font-weight-bold">Pass Out Year</td>
+                            <td class="text-uppercase font-weight-bold">{{myprofile.YOP}}</td>
+                        </tr>
+                         <tr class="text-info bg-light">
+                            <td class="text-uppercase font-weight-bold">My Resume</td>
+                            <td class="text-uppercase font-weight-bold"><a class="w3-btn w3-white w3-border w3-border-teal w3-round" href="/media/{{myprofile.myresume}}">My Resume</a></td>
+                        </tr>
+                        </table>
+<hr class="colorgraph mb-5">
+            </div>
+
+
+            <div id="education" class="page-content city" style="display:none">
+                <div class="h4 text-uppercase font-weight-bold m-5">Education</div><hr class="colorgraph mb-5">
+                        <table>
+                        <tr class="text-info bg-light">
+                            <td class="text-uppercase font-weight-bold">Course</td>
+                            <td class="text-uppercase font-weight-bold">{{myprofile.course}}</td>
+                        </tr>
+                        <tr class="text-info bg-light">
+                            <td class="text-uppercase font-weight-bold">Branch</td>
+                            <td class="text-uppercase font-weight-bold">{{myprofile.branch}}</td>
+                        </tr>
+                          <tr class="text-info bg-light">
+                            <td class="text-uppercase font-weight-bold">Year Of Joining</td>
+                            <td class="text-uppercase font-weight-bold">{{myprofile.YOJ}}</td>
+                        </tr>
+                         <tr class="text-info bg-light">
+                            <td class="text-uppercase font-weight-bold">Year Of Passing</td>
+                            <td class="text-uppercase font-weight-bold">{{myprofile.YOP}}</td>
+                        </tr>
+                         <tr class="text-info bg-light">
+                            <td class="text-uppercase font-weight-bold">College</td>
+                            <td class="text-uppercase font-weight-bold">Shaheed Bhagat Singh State Technical Campus</td>
+                        </tr>
+                        </table>
 <br><br>
-<!-- Header -->
-<header class="w3-display-container w3-content w3-center" style="max-width:1500px">
-  <img class="w3-image" src="{% static 'images/photographer.jpg' %}" alt="Me" width="1500" height="600">
-  <div class="w3-display-middle w3-padding-large w3-border w3-wide w3-text-light-grey w3-center">
-    <h1 class="w3-hide-medium w3-hide-small w3-xxxlarge">{{myprofile.name}}</h1>
-    <h5 class="w3-hide-large" style="white-space:nowrap">{{myprofile.name}}</h5>
-    <h3 class="w3-hide-medium w3-hide-small">{{myprofile.description}}</h3>
-  </div>
 
-  <!-- Navbar (placed at the bottom of the header image) -->
-  <div class="w3-bar w3-light-grey w3-round w3-display-bottommiddle w3-hide-small" style="bottom:-16px">
-    <a href="#" class="w3-bar-item w3-button">Home</a>
-    <a href="#portfolio" class="w3-bar-item w3-button">Portfolio</a>
-    <a href="#contact" class="w3-bar-item w3-button">Contact</a>
-  </div>
-</header>
+                        <table>
+                            <tr class="text-info bg-light">
+                                <th class="text-uppercase font-weight-bold"> 10 %</th>
+                                <th class="text-uppercase font-weight-bold"> 12 %</th>
+                                <th class="text-uppercase font-weight-bold"> Graduation %</th>
+                            </tr>
+                        <tr class="text-info bg-light">
+                            <td class="text-uppercase font-weight-bold">{{myprofile.highper}}</td>
+                            <td class="text-uppercase font-weight-bold">{{myprofile.interper}}</td>
+                            <td class="text-uppercase font-weight-bold">{{myprofile.grduper}}</td>
+                        </tr>
+                        </table>
 
-<!-- Navbar on small screens -->
-<div class="w3-center w3-light-grey w3-padding-16 w3-hide-large w3-hide-medium">
-<div class="w3-bar w3-light-grey">
-  <a href="#" class="w3-bar-item w3-button">Home</a>
-  <a href="#portfolio" class="w3-bar-item w3-button">Portfolio</a>
-  <a href="#contact" class="w3-bar-item w3-button">Contact</a>
-</div>
-</div>
-<!-- Page content -->
-<div class="w3-content w3-padding-large w3-margin-top" id="portfolio">
-  <!-- Contact -->
-  <div class="w3-light-grey w3-padding-large w3-padding-32 w3-margin-top" id="contact">
-    <h3 class="w3-center">Contact</h3>
-    <hr>
-    <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus.</p>
+                    </tr><hr class="colorgraph mb-5">
+            </div>
 
-    <form action="/action_page.php" target="_blank" method="post">
-      <div class="w3-section">
-        <label>Name</label>
-        <input class="w3-input w3-border" type="text" required name="Name">
-      </div>
-      <div class="w3-section">
-        <label>Email</label>
-        <input class="w3-input w3-border" type="text" required name="Email" placeholder=" {{myprofile.user.email}}">
-      </div>
-      <div class="w3-section">
-        <label>Message</label>
-        <input class="w3-input w3-border" required name="Message">
-      </div>
-      <button type="submit" class="w3-button w3-block w3-dark-grey">Send</button>
-    </form><br>
-    <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">w3.css</a></p>
-
-  </div>
-
-<!-- End page content -->
-</div>
+            <div id="exp" class="page-content city" style="display:none">
+                <div class="h4 text-uppercase font-weight-bold m-5">Skills and Experience</div><hr class="colorgraph mb-5">
+                <table>
+                        <tr class="text-info bg-light">
+                            <td class="text-uppercase font-weight-bold">Working Status</td>
+                            <td class="text-uppercase font-weight-bold">{{myprofile.status}}</td>
+                        </tr>
+                        <tr class="text-info bg-light">
+                            <td class="text-uppercase font-weight-bold">Year Of Experience</td>
+                            <td class="text-uppercase font-weight-bold">{{myprofile.YOE}}</td>
+                        </tr>
+                         <tr class="text-info bg-light">
+                            <td class="text-uppercase font-weight-bold">Skills</td>
+                            <td class="text-uppercase font-weight-bold">{{myprofile.description}}</td>
+                        </tr>
+                         <tr class="text-info bg-light">
+                            <td class="text-uppercase font-weight-bold">My Resume</td>
+                            <td class="text-uppercase font-weight-bold">{{myprofile.myresume}}</td>
+                        </tr>
+                </table>
 
 
+                <hr class="colorgraph mb-5">
+            </div>
+
+            <div id="contact" class="page-content city" style="display:none">
+                <div class="h4 text-uppercase font-weight-bold m-5">Get In Touch</div><hr class="colorgraph mb-5">
+                <table>
+                        <tr class="text-info bg-light">
+                            <td class="text-uppercase font-weight-bold">Contact Number</td>
+                            <td class="text-uppercase font-weight-bold">{{myprofile.phone_no}}</td>
+                        </tr>
+                        <tr class="text-info bg-light">
+                            <td class="text-uppercase font-weight-bold">Address</td>
+                            <td class="text-uppercase font-weight-bold">{{myprofile.address}}</td>
+                        </tr>
+                         <tr class="text-info bg-light">
+                            <td class="text-uppercase font-weight-bold">Email</td>
+                            <td class=" font-weight-bold">{{myprofile.user.email}}
+                                <!--a href="/social/emailform" class="w3-btn w3-white w3-border w3-border-teal w3-round">Email Form</a--></td>
+                        </tr>
+                </table>
+                <hr class="colorgraph mb-5">
+            </div>
+
+        </div>
+
+    </div>
+        <a href="/social/myprofile" class="w3-btn w3-white w3-border w3-border-teal w3-round">Back</a>
+        <br>
+    </div>
 
 
-<div class="p-5">
-	<h1 class="myhead2">{{myprofile.name}}</h1>
-	<hr>
-<div class="row">
-	<div class="col-sm-6">
-	<p><strong>Age :: </strong> {{myprofile.age}}</p>
-	<p><strong>Gender :: </strong> {{myprofile.gender}}</p>
-	<p><strong>Address :: </strong> {{myprofile.address}}</p>
-	<p><strong>Status :: </strong> {{myprofile.status}}</p>
-	<p><strong>Phone No :: </strong> {{myprofile.phone_no}}</p>
-	<p><strong> Email :: </strong> {{myprofile.user.email}}</p>
-	<p><strong>Description :: </strong> {{myprofile.description}}</p>
-	</div>
-	<div class="col-sm-6">
-		<img class="img-fluid" src="/media/{{myprofile.pic}}" />
-	</div>
-    /media/{{myprofile.myresume}}
-    	<div class="col-sm-6">
-            <a class="img-fluid" href="/media/{{myprofile.myresume}}">My Resume</a>
-	</div>
-</div>
-<a href="/social/myprofile" class="w3-btn w3-white w3-border w3-border-teal w3-round">Back</a>
-<a href="/social/emailform" class="w3-btn w3-white w3-border w3-border-teal w3-round">Email Form</a>
-	{% if request.user.id == myprofile.id %}
-	<a class="w3-btn w3-white w3-border w3-border-teal w3-round" href='/social/myprofile/edit/{{ myprofile.id }}'>Edit</a>
-	{% endif %}
-</div>	</div></div></div>
+
+
+
+
+    <script>
+function openCity(cityName) {
+  var i;
+  var x = document.getElementsByClassName("city");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  document.getElementById(cityName).style.display = "block";
+}
+</script>
+</body>
+
+
+
+
 {% endblock %}

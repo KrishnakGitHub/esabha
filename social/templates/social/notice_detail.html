@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container p-5 mt-5">
+    <br>
+    <div class="h2">Notice Detail</div>
+    <hr>
+    <ul class="w3-ul p-5">
+    <li class=" row  text-center w3-animate-opacity">
+        <div class="col">
+            <div class="h5 text-left">{{notice.subject}} - {{notice.cr_date | date:"D d M Y"}}</div>
+            <div class="p text-left">{{notice.msg}}</div>
+        </div>
+        <div class="col p-3 text-white">
+            <img class="img-fluid" src="/media/{{notice.pic}}">
+        </div>
+        <div class="col-lg-1"> <a class="w3-right" href='/social/notice/delete/{{notice.id}}'><span class="fa fa-trash"></span></a></div>
+      </li>
+      </ul>
+</div>
+{% endblock %}

@@ -11,10 +11,10 @@ from django.views.generic.list import ListView
 from reportlab.pdfgen import canvas
 from requests import request
 
-from college.models import Notice
+
 from esabha import settings
 
-from social.models import FollowUser, MyPost, MyProfile, PostLike, Question, Feedback
+from social.models import FollowUser, MyPost, MyProfile, PostLike, Question, Feedback,Notice
 from django.views.generic.detail import DetailView
 from django.db.models import Q
 from django.views.generic.edit import UpdateView, CreateView, DeleteView
@@ -51,6 +51,7 @@ class HomeView(TemplateView):
         context["user_count"] = MyProfile.objects.count()
         context["faq_list"] = Question.objects.all()
         context["feed_list"] = Feedback.objects.all()
+        context["feed_count"] = Feedback.objects.count()
         return context;
 
 
@@ -89,8 +90,8 @@ def unlike(req, pk):
 @method_decorator(login_required, name="dispatch")
 class MyProfileUpdateView(UpdateView):
     model = MyProfile
-    fields = ["name", "age", "address", "status", "gender", "phone_no", "description", "pic", "YOE", "YOP", "YOJ",
-              "ptype", "course", "branch", "grduper", "interper", "highper", "myresume"]
+    fields = ["name", "gender","ptype", "pic","age","phone_no","address","course", "branch","YOP", "YOJ","highper","interper","grduper",
+            "status","YOE", "description","myresume"]
 
 
 @method_decorator(login_required, name="dispatch")
@@ -188,8 +189,8 @@ def getfile(request):
     writer = csv.writer(response)
     for alumni in employees:
         writer.writerow(
-            [alumni.name, alumni.phone_no, alumni.age, alumni.address, alumni.status, alumni.gender, alumni.description,
-             alumni.pic, alumni.YOE, alumni.YOP, alumni.YOJ, alumni.ptype, alumni.course, alumni.branch, alumni.grduper,
+            [alumni.name, alumni.gender, alumni.pic, alumni.address, alumni.status, alumni.phone_no, alumni.description,
+             alumni.age, alumni.YOE, alumni.YOP, alumni.YOJ, alumni.ptype, alumni.course, alumni.branch, alumni.grduper,
              alumni.interper, alumni.highper])
     return response
 
@@ -263,6 +264,15 @@ class MyList(TemplateView):
 
 def successView(request):
     return HttpResponse('Success! Thank you for your message.')
+
+
+class NoticeListView(ListView):
+    model = Notice
+
+
+@method_decorator(login_required, name="dispatch")
+class NoticeDetailView(DetailView):
+    model = Notice
 
 # @method_decorator(login_required, name="dispatch")
 # class ProfileUpdateView(UpdateView):
