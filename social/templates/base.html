@@ -181,15 +181,15 @@ bottom: 1px;
 			<a href="/social/jobhome" class="w3-bar-item  w3-padding text-white">Job Posts</a>
 			<a href="/social/myprofile" class="w3-bar-item  w3-padding text-white">Alumni Directory</a>
 			<a href="/accounts/logout" class="w3-bar-item  w3-padding text-white">Logout</a>
+			<a href="{% url 'password_reset' %}" class="w3-bar-item  w3-padding text-white">Reset Password</a>
             {% else %}
 			<a href="/accounts/login" class="w3-bar-item  w3-padding text-white">Login</a>
 			<a href="/accounts/register" class="w3-bar-item  w3-padding text-white">Register</a>
-			<a href="/accounts/password/reset" class="w3-bar-item  w3-padding text-white">Password Reset</a>
+			<a href="{% url 'password_reset' %}" class="w3-bar-item  w3-padding text-white">Forgot Password</a>
             {% endif %}
             {% if user.is_superuser %}
 			<a class="w3-bar-item  w3-padding text-white" href="/admin">Admin</a>
             {% endif %}
-			<a href="{% url 'password_reset' %}" class="w3-bar-item  w3-padding text-white">Forgot Password</a>
 		</div>
 	</div>
 

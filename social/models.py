@@ -33,7 +33,7 @@ class MyProfile(models.Model):
         ("cse", "CSE"), ("ece", "ECE"), ("me", "ME"), ("ee", "EE"), ("civil", "CIVIL"), ("che", "CHE")))
     phone_no = models.CharField(validators=[RegexValidator("^0?[5-9]{1}\d{9}$")], max_length=15, null=True, blank=True)
     description = models.TextField(default="none", null=True, blank=True)
-    pic = models.ImageField(upload_to="images\\", null=True, blank=True)
+    pic = models.ImageField(upload_to="images\\", null=True)
     myresume = models.FileField(upload_to="images\\", null=True, blank=True)
 
     def __str__(self):
