@@ -1,10 +1,12 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.deletion import CASCADE
 from django.core.validators import MinValueValidator, RegexValidator
 
-
 # Create your models here.
+from django.urls import reverse
+from django.utils import timezone
 
 
 class MyProfile(models.Model):
@@ -33,6 +35,7 @@ class MyProfile(models.Model):
     description = models.TextField(default="none", null=True, blank=True)
     pic = models.ImageField(upload_to="images\\", null=True)
     myresume = models.FileField(upload_to="images\\", null=True, blank=True)
+
     def __str__(self):
         return "%s" % self.user
 
@@ -94,10 +97,11 @@ class Feedback(models.Model):
     feed_name = models.CharField(max_length=200)
     suggetion = models.TextField(max_length=200)
     feedback = models.IntegerField()
-    feed_phone_no = models.CharField( max_length=15, null=True,
+    feed_phone_no = models.CharField(max_length=15, null=True,
                                      blank=True)
     feed_email = models.EmailField(max_length=200)
     feed_date = models.DateTimeField(auto_now_add=True)
+
     def __str__(self):
         return "%s" % self.feed_email
 
@@ -108,8 +112,33 @@ class Question(models.Model):
     cr_date = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(to=User, on_delete=CASCADE, null=True, blank=True)
 
+
 class Notice(models.Model):
     subject = models.CharField(max_length=100)
     msg = models.TextField()
-    cr_date = models.DateTimeField(auto_now_add = True)
+    cr_date = models.DateTimeField(auto_now_add=True)
     pic = models.ImageField(upload_to="images\\", null=True)
+
+
+class JobPost(models.Model):
+    user = get_user_model()
+    company_name = models.CharField(max_length=50)
+    eligibility = models.CharField(max_length=500)
+    experience = models.CharField(max_length=500, null=True, blank=True)
+    job_role = models.CharField(default='Engineer', max_length=50)
+    date_posted = models.DateTimeField(default=timezone.now)
+    job_requirements = models.TextField(null=True, blank=True)
+    job_specification = models.TextField(null=True, blank=True)
+    job_description = models.TextField(null=True, blank=True)
+    work_location = models.CharField(max_length=100)
+    salary = models.CharField(max_length=20)
+    how_to_apply = models.TextField(default="No method provided")
+    last_date = models.DateField(default=timezone.now)
+    author = models.ForeignKey(user, on_delete=models.CASCADE)
+    slug = models.SlugField(blank=True, null=True)
+
+    def __str__(self):
+        return self.company_name
+
+    def get_absolute_url(self):
+        return reverse('Job:job_detail', kwargs={'slug': self.slug})

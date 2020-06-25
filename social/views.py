@@ -1,5 +1,6 @@
 import csv
 
+from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.core.mail import send_mail, BadHeaderError, EmailMessage
 from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
@@ -11,16 +12,15 @@ from django.views.generic.list import ListView
 from reportlab.pdfgen import canvas
 from requests import request
 
-
 from esabha import settings
 
-from social.models import FollowUser, MyPost, MyProfile, PostLike, Question, Feedback,Notice
+from social.models import FollowUser, MyPost, MyProfile, PostLike, Question, Feedback, Notice, JobPost
 from django.views.generic.detail import DetailView
 from django.db.models import Q
 from django.views.generic.edit import UpdateView, CreateView, DeleteView
 from django.http.response import HttpResponseRedirect, HttpResponse
 
-from social.forms import EmailForm
+from social.forms import EmailForm, JobForm
 
 
 # Create your views here.
@@ -90,8 +90,9 @@ def unlike(req, pk):
 @method_decorator(login_required, name="dispatch")
 class MyProfileUpdateView(UpdateView):
     model = MyProfile
-    fields = ["name", "gender","ptype", "pic","age","phone_no","address","course", "branch","YOP", "YOJ","highper","interper","grduper",
-            "status","YOE", "description","myresume"]
+    fields = ["name", "gender", "ptype", "pic", "age", "phone_no", "address", "course", "branch", "YOP", "YOJ",
+              "highper", "interper", "grduper",
+              "status", "YOE", "description", "myresume"]
 
 
 @method_decorator(login_required, name="dispatch")
@@ -273,6 +274,7 @@ class NoticeListView(ListView):
 @method_decorator(login_required, name="dispatch")
 class NoticeDetailView(DetailView):
     model = Notice
+
 
 # @method_decorator(login_required, name="dispatch")
 # class ProfileUpdateView(UpdateView):

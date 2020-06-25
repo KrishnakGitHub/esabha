@@ -2,46 +2,46 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="80a2fb7e-bc43-4443-91c3-1b9e8c5bce50" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/esabha/static/images/welcome_AXA6CSV.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/social/templates/social/notice_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/esabha/static/images/LogoWG_j9yoXCk.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/esabha/static/images/Screenshot_35.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/esabha/static/images/Screenshot_35_eih3yOZ.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/esabha/static/images/avatar2_PFOzUsT.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/esabha/static/images/download.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/esabha/static/images/google-logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/esabha/static/images/google-logo_YOS1PRv.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/esabha/static/images/google-logo_l4Y84It.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/esabha/static/images/google-logo_ujRfM6P.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/social/templates/registration/password_reset.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/social/templates/registration/password_reset_complete.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/social/templates/registration/password_reset_confirm.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/social/templates/registration/password_reset_done.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/social/templates/registration/password_reset_email (1).html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/social/templates/registration/password_reset_email (1).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/social/templates/registration/password_reset_email.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/social/templates/registration/password_reset_email.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/social/templates/registration/password_reset_subject.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/social/templates/social/job_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/social/templates/social/jobdetail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/social/templates/social/jobpost_form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/social/templates/social/password_reset.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/social/templates/social/password_reset_complete.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/social/templates/social/password_reset_confirm.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/social/templates/social/password_reset_done.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/social/templates/social/password_reset_email.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/social/templates/social/password_reset_email.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/social/templates/social/password_reset_subject.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/social/utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.project" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.pydevproject" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/college/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/college/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/college/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/college/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/college/migrations/0002_notice_pic.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/college/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/college/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/college/templates/base.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/college/templates/college/notice_detail.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/college/templates/college/notice_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/social/templates/social/notice_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/college/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/college/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/college/views.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/esabha/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/esabha/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/esabha/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/esabha/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/social/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/social/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/social/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/social/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/social/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/social/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/social/migrations/0002_question.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/social/migrations/0003_myprofile_myresume.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/social/migrations/0004_auto_20200621_0255.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/social/migrations/0005_auto_20200621_0258.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/social/migrations/0006_auto_20200621_0300.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/social/migrations/0007_auto_20200621_0339.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/social/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/social/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social/mysignal.py" beforeDir="false" afterPath="$PROJECT_DIR$/social/mysignal.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/social/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/social/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/social/templates/social/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/social/templates/social/about.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/social/templates/social/all_post.html" beforeDir="false" afterPath="$PROJECT_DIR$/social/templates/social/all_post.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/social/templates/social/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/social/templates/social/contact.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/social/templates/social/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/social/templates/social/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/social/templates/social/mypost_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/social/templates/social/mypost_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/social/templates/social/myprofile_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/social/templates/social/myprofile_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/social/templates/social/myprofile_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/social/templates/social/myprofile_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/social/templates/social/myprofile_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/social/templates/social/myprofile_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social/templates/registration/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/social/templates/registration/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social/templates/social/feedback_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/social/templates/social/feedback_form.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/social/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/social/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/social/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/social/views.py" afterDir="false" />
     </list>
@@ -74,7 +74,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/social" />
     <property name="settings.editor.selected.configurable" value="PyConsoleConfigurable.Python Console" />
   </component>
   <component name="PyConsoleOptionsProvider">
@@ -86,17 +86,18 @@
     </option>
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\abc\Desktop\Alumni Project\esabha\social" />
+      <recent name="C:\Users\abc\Desktop\Alumni Project\esabha\social\templates\social" />
+      <recent name="C:\Users\abc\Desktop\Alumni Project\esabha\social\templates\registration" />
+      <recent name="C:\Users\abc\Desktop\Alumni Project\esabha\social\static\css" />
+      <recent name="C:\Users\abc\Desktop\Alumni Project\esabha\social\static\images" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\abc\Desktop\Alumni Project\esabha\modules" />
       <recent name="C:\Users\abc\Desktop\Alumni Project\esabha" />
       <recent name="C:\Users\abc\Desktop\Alumni Project\esabha\social\templates" />
       <recent name="C:\Users\abc\Desktop\Alumni Project\esabha\social" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\abc\Desktop\Alumni Project\esabha\social\static\css" />
-      <recent name="C:\Users\abc\Desktop\Alumni Project\esabha\social\static\images" />
-      <recent name="C:\Users\abc\Desktop\Alumni Project\esabha\social\templates\social" />
-      <recent name="C:\Users\abc\Desktop\Alumni Project\esabha\social\templates" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -138,7 +139,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592835766363</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="final before commit">
+      <created>1593000580000</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1593000580062</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -146,17 +154,22 @@
     <MESSAGE value="after email commit" />
     <MESSAGE value="after resume&#10; commit" />
     <MESSAGE value="demo1 commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="demo1 commit" />
+    <MESSAGE value="final before commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="final before commit" />
   </component>
   <component name="WindowStateProjectService">
     <state x="305" y="46" key="#Inspections" timestamp="1592029312923">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="305" y="46" key="#Inspections/0.0.1366.768@0.0.1366.768" timestamp="1592029312923" />
-    <state x="0" y="0" key="CommitChangelistDialog2" timestamp="1592835762122">
+    <state x="405" y="166" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1593066378525">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="0" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1592835762122" />
+    <state x="405" y="166" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.768@0.0.1366.768" timestamp="1593066378525" />
+    <state x="0" y="0" key="CommitChangelistDialog2" timestamp="1593000554819">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="0" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1593000554819" />
     <state x="410" y="73" key="FileChooserDialogImpl" timestamp="1592577905549">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -173,10 +186,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="31" y="0" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1592936635530" />
-    <state x="175" y="62" key="Vcs.Push.Dialog.v2" timestamp="1592836011860">
+    <state x="175" y="62" key="Vcs.Push.Dialog.v2" timestamp="1593000663958">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="175" y="62" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1592836011860" />
+    <state x="175" y="62" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1593000663958" />
     <state x="358" y="133" key="git4idea.merge.GitPullDialog" timestamp="1592836004513">
       <screen x="0" y="0" width="1366" height="768" />
     </state>

@@ -1,45 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
-{% load crispy_forms_tags %}
 <style>
-html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
-body{
-background:#ffffff;
-}
-li{
-list-style-type:none;
-}
-a{text-decoration:none;
-color:#fff;
-}
-a:hover{
-text-decoration:none;
-color:#fff;
-cursor: pointer;
-}
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
-  width: 40%;
-  border-radius: 5px;
-}
-
-.card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-}
-
-img {
-  border-radius: 5px 5px 0 0;
-}
-
-.container1 {
-  padding: 2px 16px;
-}
 table {
   width:100%;
 }
 table, th, td {
-  border: 1px solid black;
+  border: 0px solid black;
   border-collapse: collapse;
 }
 th, td {
@@ -78,34 +44,39 @@ th, td {
   background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
   background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
 }
-input{
-
-    width:50%;
-    margin-bottom:5%;
-}
-label{
-    width:25%;
-    margin-bottom:5%;
-}
-textarea{
-    margin-top:5%;
-    width:75%;
-}
 
 </style>
 <br><br><br>
+<br>
 <div class="container">
-<hr class="colorgraph mb-5">
-		<form id="msform" class="w3-center w-100 p-5" enctype="multipart/form-data" method="post">
-		{% csrf_token %}
-			<fieldset class="w-100 p-5 m-5">
-			    <h2>Feedback Form</h2>
-			    <hr>
-<p>*Please enter rating on scale of 5 in feedback and please give your valuable suggetion</p><br><br>
-		{{form.as_table}}<br><br><br>
-		<input class="w3-btn w-50 w3-cyan w3-hover-green my-3" type="submit" />
-			</fieldset>
-		</form>
-		<hr class="colorgraph mb-5">
-		</div>
+		<div class="m-3 h4 text-uppercase font-weight-bold">Job Details</div>
+	<hr class="colorgraph m-5">
+<div class="row">
+	<div class="col m-5">
+<table>
+                        <tr class="text-info bg-light">
+                            <td class="text-uppercase font-weight-bold">Subject</td>
+                            <td class="text-uppercase font-weight-bold">{{mypost.subject}}</td>
+                        </tr>
+                        <tr class="text-info bg-light">
+                            <td class="text-uppercase font-weight-bold">Date</td>
+                            <td class="text-uppercase font-weight-bold">{{mypost.cr_date | date:"d/m/y"}}</td>
+                        </tr>
+                         <tr class="text-info bg-light">
+                            <td class="text-uppercase font-weight-bold">Message</td>
+                            <td class="text-uppercase font-weight-bold">{{mypost.msg}}</td>
+                        </tr>
+
+</table>
+</div>
+	<div class="col p-5">
+		<img class="img-fluid" src="/media/{{mypost.pic}}" />
+	</div>
+	</div><a href="/social/mypost" class="w3-btn w3-white w3-border w3-border-teal w3-round m-5">Back</a>
+	<br><br>
+	<hr class="colorgraph m-5">
+</div>
+
+
+
 {% endblock %}
