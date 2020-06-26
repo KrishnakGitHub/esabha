@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.forms import SelectDateWidget
 
-from social.models import MyProfile, Feedback, JobPost
+from social.models import MyProfile, Feedback
 
 
 # User update form allows users to update user name and email
@@ -33,14 +33,3 @@ class EmailForm(forms.Form):
     to_email = forms.EmailField(required=True)
     subject = forms.CharField(required=True)
     message = forms.CharField(widget=forms.Textarea, required=True)
-
-
-class JobForm(forms.ModelForm):
-    class Meta:
-        model = JobPost
-        fields = ('company_name', 'eligibility', 'job_role', 'experience', 'job_requirements',
-                  'job_description', 'job_specification', 'work_location',
-                  'salary', 'how_to_apply', 'last_date')
-        widgets = {
-            'last_date': SelectDateWidget(attrs={'style': 'display: inline-block; width: 33%;'})
-        }

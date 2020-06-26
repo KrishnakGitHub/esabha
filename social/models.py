@@ -118,27 +118,3 @@ class Notice(models.Model):
     msg = models.TextField()
     cr_date = models.DateTimeField(auto_now_add=True)
     pic = models.ImageField(upload_to="images\\", null=True)
-
-
-class JobPost(models.Model):
-    user = get_user_model()
-    company_name = models.CharField(max_length=50)
-    eligibility = models.CharField(max_length=500)
-    experience = models.CharField(max_length=500, null=True, blank=True)
-    job_role = models.CharField(default='Engineer', max_length=50)
-    date_posted = models.DateTimeField(default=timezone.now)
-    job_requirements = models.TextField(null=True, blank=True)
-    job_specification = models.TextField(null=True, blank=True)
-    job_description = models.TextField(null=True, blank=True)
-    work_location = models.CharField(max_length=100)
-    salary = models.CharField(max_length=20)
-    how_to_apply = models.TextField(default="No method provided")
-    last_date = models.DateField(default=timezone.now)
-    author = models.ForeignKey(user, on_delete=models.CASCADE)
-    slug = models.SlugField(blank=True, null=True)
-
-    def __str__(self):
-        return self.company_name
-
-    def get_absolute_url(self):
-        return reverse('Job:job_detail', kwargs={'slug': self.slug})

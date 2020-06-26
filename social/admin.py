@@ -1,5 +1,5 @@
 from django.contrib import admin
-from social.models import FollowUser, MyPost, MyProfile, PostComment, PostLike, Feedback, Question, Notice, JobPost
+from social.models import FollowUser, MyPost, MyProfile, PostComment, PostLike, Feedback, Question, Notice
 from django.contrib.admin.options import ModelAdmin
 
 
@@ -19,9 +19,6 @@ class MyPostAdmin(ModelAdmin):
 
 
 admin.site.register(MyPost, MyPostAdmin)
-
-
-admin.site.register(JobPost)
 
 
 class MyProfileAdmin(ModelAdmin):

@@ -2,11 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="80a2fb7e-bc43-4443-91c3-1b9e8c5bce50" name="Default Changelist" comment="final before1 commit">
+      <change afterPath="$PROJECT_DIR$/social/static/images/download.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/social/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/social/migrations/0002_auto_20200625_1819.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/social/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/social/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/social/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/social/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/social/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/social/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social/mysignal.py" beforeDir="false" afterPath="$PROJECT_DIR$/social/mysignal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social/templates/social/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/social/templates/social/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social/templates/social/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/social/templates/social/contact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social/utils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/social/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/social/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +129,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593089808724</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="final before1 commit">
+      <created>1593092131139</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1593092131139</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -144,10 +157,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="405" y="166" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.768@0.0.1366.768" timestamp="1593066378525" />
-    <state x="0" y="0" key="CommitChangelistDialog2" timestamp="1593091103253">
+    <state x="0" y="0" key="CommitChangelistDialog2" timestamp="1593092126576">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="0" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1593091103253" />
+    <state x="0" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1593092126576" />
     <state x="410" y="73" key="FileChooserDialogImpl" timestamp="1592577905549">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -164,14 +177,14 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="31" y="0" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1592936635530" />
-    <state x="175" y="62" key="Vcs.Push.Dialog.v2" timestamp="1593089838283">
+    <state x="175" y="62" key="Vcs.Push.Dialog.v2" timestamp="1593092189780">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="175" y="62" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1593089838283" />
-    <state x="358" y="133" key="git4idea.merge.GitPullDialog" timestamp="1592836004513">
+    <state x="175" y="62" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1593092189780" />
+    <state x="358" y="133" key="git4idea.merge.GitPullDialog" timestamp="1593092175032">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="358" y="133" key="git4idea.merge.GitPullDialog/0.0.1366.768@0.0.1366.768" timestamp="1592836004513" />
+    <state x="358" y="133" key="git4idea.merge.GitPullDialog/0.0.1366.768@0.0.1366.768" timestamp="1593092175032" />
     <state x="275" y="-1" key="search.everywhere.popup" timestamp="1592602083335">
       <screen x="0" y="0" width="1366" height="768" />
     </state>

@@ -14,13 +14,13 @@ from requests import request
 
 from esabha import settings
 
-from social.models import FollowUser, MyPost, MyProfile, PostLike, Question, Feedback, Notice, JobPost
+from social.models import FollowUser, MyPost, MyProfile, PostLike, Question, Feedback, Notice
 from django.views.generic.detail import DetailView
 from django.db.models import Q
 from django.views.generic.edit import UpdateView, CreateView, DeleteView
 from django.http.response import HttpResponseRedirect, HttpResponse
 
-from social.forms import EmailForm, JobForm
+from social.forms import EmailForm
 
 
 # Create your views here.
