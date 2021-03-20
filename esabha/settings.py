@@ -127,12 +127,12 @@ STATIC_URL = '/static/'
 ACCOUNT_ACTIVATION_DAYS=3
 
 EMAIL_HOST= 'smtp.gmail.com'
-EMAIL_HOST_USER= 'krishnagammingadda@gmail.com'
-EMAIL_HOST_PASSWORD= 'passwordpatanih1'
+EMAIL_HOST_USER= '***************@gmail.com'
+EMAIL_HOST_PASSWORD= '****************'
 EMAIL_PORT= 465
 EMAIL_USE_TLS= False
 EMAIL_USE_SSL = True
-DEFAULT_FROM_EMAIL= "krishnagammingadda@gmail.com"
+DEFAULT_FROM_EMAIL= "*****************@gmail.com"
 
 LOGIN_REDIRECT_URL = "/"
 
